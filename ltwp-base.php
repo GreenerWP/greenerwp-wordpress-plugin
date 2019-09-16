@@ -14,6 +14,17 @@ $plugin['template_settings'] = [
   'templates_path' => $plugin['path'] . DIRECTORY_SEPARATOR . 'views',
 ];
 
+$plugin['frontend'] = function ( $plugin ) {
+  return new LTWP\UI\Frontend(
+    [
+      'js_base_url' => $plugin['url'] . '/dist/js',
+      'js_base_path' => $plugin['path'] . '/dist/js',
+      'css_base_url' => $plugin['url'] . '/dist/css',
+      'css_base_path' => $plugin['path'] . '/dist/css',
+    ]
+  );
+};
+
 $plugin['template_renderer'] = function ( $plugin ) {
   return new LTWP\TemplateRenderer( $plugin['template_settings'] );
 };

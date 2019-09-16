@@ -52,12 +52,9 @@ function ltwp_init() {
   $plugin = new LTWP\Plugin();
   $plugin['path'] = realpath( plugin_dir_path( __FILE__ ) ) . DIRECTORY_SEPARATOR;
   $plugin['url'] = plugin_dir_url( __FILE__ );
-  $plugin['js_base_url'] = $plugin['url'] . '/js';
-  $plugin['js_base_path'] = $plugin['path'] . '/js';
-  $plugin['css_base_url'] = $plugin['url'] . '/css';
-  $plugin['css_base_path'] = $plugin['path'] . '/css';
 
   require __DIR__ . '/ltwp-base.php';
+  require __DIR__ . '/ltwp-ui-admin.php';
 
   $plugin->run();
 
