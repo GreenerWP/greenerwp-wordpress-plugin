@@ -18,9 +18,15 @@ class Page {
     $this->frontend->enqueue_admin_script(
       'lowtechwp-ui-admin-page', 'ui/admin/page.js',
       [ 'wp-i18n', 'wp-api', 'wp-element' ] );
+    add_action( 'wp_footer', [ $this, 'add_caching_check_token' ] );
   }
 
-	public function add_admin_menu() {
+  public function add_caching_check_token() {
+    // TODO Only output when requested
+    echo '<!-- lowtechwp caching check ' . microtime() . ' -->';
+  }
+
+  public function add_admin_menu() {
     add_menu_page( __( 'LowTechWP', 'ltwp' ), __( 'LowTechWP', 'ltwp' ), 'manage_options', 'lowtechwp', [ $this, 'render' ] );
   }
 

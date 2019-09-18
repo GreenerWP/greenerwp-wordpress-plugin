@@ -1,3 +1,6 @@
+import CacheCheck from '../../check/cache.js';
+import Check from './check.jsx';
+
 const { __, _x, _n, _nx } = wp.i18n;
 
 class Suggestions extends wp.element.Component {
@@ -7,9 +10,9 @@ class Suggestions extends wp.element.Component {
 
   render() {
 		return (
-      <p>Hello world!</p>
+      <Check check={new CacheCheck()}/>
 		);
 	};
 }
 
-export default Suggestions;
+module.exports = Suggestions;

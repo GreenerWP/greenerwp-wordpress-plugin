@@ -4,7 +4,8 @@
 		"parcel_build_command": "build"
 	},
 	"scripts": {
-		"build:js": "cross-var parcel $npm_package_config_parcel_build_command --public-url . -d dist/js/ui/admin/ -o page.js js/ui/admin/page.js"
+		"build:js": "cross-var parcel $npm_package_config_parcel_build_command --public-url . -d dist/js/ui/admin/ -o page.js js/ui/admin/page.js",
+		"watch:js": "npm run build:js --lowtechwp-wordpress-plugin:parcel_build_command=watch"
 	},
 	"devDependencies": {
 		"babel-core": "^6.26.3",
@@ -13,5 +14,7 @@
 		"cross-var": "^1.1.0",
 		"parcel": "^1.12.3"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"@babel/preset-env": "^7.6.0"
+	}
 }
