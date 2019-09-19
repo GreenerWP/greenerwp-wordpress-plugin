@@ -18,6 +18,8 @@ class Page {
     $this->frontend->enqueue_admin_script(
       'lowtechwp-ui-admin-page', 'ui/admin/page.js',
       [ 'wp-i18n', 'wp-api', 'wp-element' ] );
+    $this->frontend->enqueue_admin_style(
+      'lowtechwp-ui-admin', 'admin.css');
     add_action( 'wp_footer', [ $this, 'add_caching_check_token' ] );
   }
 

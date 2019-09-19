@@ -1,0 +1,65 @@
+$border-style: 1px solid #e2e4e7;
+
+.ltwp-recipe {
+  border: $border-style;
+  max-width: 1000px;
+  background: white;
+}
+
+.ltwp-recipe__title {
+  color: #72777c;
+  background: #FAFAFA;
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.3em;
+  cursor: pointer;
+  position: relative;
+  &::before {
+    display: block;
+    opacity: 0.3;
+    content: "▼";
+    width: 0.7em;
+    height: 0.7em;
+    margin-bottom: 0.5em;
+    margin-right: 0.5em;
+    float: right;
+  }
+}
+
+.ltwp-recipe__status {
+  display: inline-block;
+  background: transparent;
+  border: $border-style;
+  border-radius: 2px;
+  float: right;
+  padding: 0 1em;
+  margin: 0 1em;
+}
+
+.ltwp-recipe__content {
+  display: none;
+}
+
+.ltwp-recipe--done {
+  .ltwp-recipe__status {
+    background: #d8fbde;
+  }
+}
+
+.ltwp-recipe--open {
+  .ltwp-recipe__title {
+    border-bottom: $border-style;
+    &::before {
+      content: "▲";
+    }
+  }
+
+  .ltwp-recipe__content {
+    display: block;
+    padding: 8px 10px;
+  }
+}

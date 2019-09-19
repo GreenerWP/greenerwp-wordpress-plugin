@@ -5,14 +5,17 @@
 	},
 	"scripts": {
 		"build:js": "cross-var parcel $npm_package_config_parcel_build_command --public-url . -d dist/js/ui/admin/ -o page.js js/ui/admin/page.js",
-		"watch:js": "npm run build:js --lowtechwp-wordpress-plugin:parcel_build_command=watch"
+		"watch:js": "npm run build:js --lowtechwp-wordpress-plugin:parcel_build_command=watch",
+		"build:css": "cross-var parcel $npm_package_config_parcel_build_command --public-url . -d dist/css/ -o admin.css scss/admin.scss",
+		"watch:css": "npm run build:css --lowtechwp-wordpress-plugin:parcel_build_command=watch"
 	},
 	"devDependencies": {
 		"babel-core": "^6.26.3",
 		"babel-preset-env": "^1.7.0",
 		"babel-preset-react": "^6.24.1",
 		"cross-var": "^1.1.0",
-		"parcel": "^1.12.3"
+		"parcel": "^1.12.3",
+		"sass": "^1.22.12"
 	},
 	"dependencies": {
 		"@babel/preset-env": "^7.6.0"

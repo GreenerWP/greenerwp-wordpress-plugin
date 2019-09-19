@@ -25,7 +25,7 @@ async function get_token( token ) {
  */
 class Cache {
   constructor() {
-    this.name = __( 'Cache', 'lowtechwp' );
+    this.name = __( 'Use site caching', 'lowtechwp' );
     this.description =  __( 'Without caching, your web server will have to generate your pages on every load, which costs time and energy.', 'lowtechwp' );
     this.failedMessage = __( 'There seems to be no caching active for your site.', 'lowtechwp' );
     this.passedMessage = __( 'Caching seems to be active for your site.', 'lowtechwp' );
