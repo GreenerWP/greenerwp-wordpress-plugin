@@ -12,7 +12,7 @@ class Recipes extends wp.element.Component {
 		return (
       <div>
         <p>
-          {__( 'Optimize your site by following these step to step instructions.', 'ltwp' )}
+          {__( 'Optimize your site by following these step by step instructions.', 'ltwp' )}
         </p>
         <Recipe done={true} check={new CacheRecipe()}/>
       </div>
