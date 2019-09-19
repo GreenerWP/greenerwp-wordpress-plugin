@@ -11,7 +11,6 @@ class Recipes extends wp.element.Component {
   render() {
 		return (
       <div>
-        <h2>{__( 'Recipes', 'ltwp' )}</h2>
         <p>
           {__( 'Optimize your site by following these step to step instructions.', 'ltwp' )}
         </p>
