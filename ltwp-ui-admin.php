@@ -6,3 +6,10 @@ $plugin['ui_admin_page'] = function ( $plugin ) {
     $plugin[ 'template_renderer' ]
   );
 };
+
+$plugin['ui_admin_recipes'] = function ( $plugin ) {
+  return new LTWP\UI\Admin\Recipes(
+    $plugin[ 'frontend' ],
+    $plugin[ 'template_renderer' ]
+  );
+};

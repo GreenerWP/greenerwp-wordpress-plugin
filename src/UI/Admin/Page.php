@@ -20,12 +20,6 @@ class Page {
       [ 'wp-i18n', 'wp-api', 'wp-element' ] );
     $this->frontend->enqueue_admin_style(
       'lowtechwp-ui-admin', 'admin.css');
-    add_action( 'wp_footer', [ $this, 'add_caching_check_token' ] );
-  }
-
-  public function add_caching_check_token() {
-    // TODO Only output when requested
-    echo '<!-- lowtechwp caching check ' . microtime() . ' -->';
   }
 
   public function add_admin_menu() {
