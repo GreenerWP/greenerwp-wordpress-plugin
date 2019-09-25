@@ -24,7 +24,12 @@ class Recipes {
   }
 
   public function add_admin_menu() {
-    add_submenu_page( 'lowtechwp', __( 'Recipes', 'ltwp' ), __( 'Recipes', 'ltwp' ), 'manage_options', 'lowtechwp_recipes', [ $this, 'render' ] );
+    $page = add_submenu_page( 'lowtechwp', __( 'Recipes', 'ltwp' ), __( 'Recipes', 'ltwp' ), 'manage_options', 'lowtechwp_recipes', [ $this, 'render' ] );
+    add_action('load-'.$page, [ $this, 'init_page' ] );
+  }
+
+  public function init_page() {
+    /* add_thickbox(); */
   }
 
   public function render() {

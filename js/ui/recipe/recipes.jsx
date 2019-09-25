@@ -1,23 +1,72 @@
+import RecipeList from './recipe-list.jsx';
 import CacheRecipe from './cache.js';
-import Recipe from './recipe.jsx';
+import WPSuperCacheRecipe from './wp-super-cache.js';
 
-const { __, _x, _n, _nx } = wp.i18n;
+const { withSelect, withDispatch, registerStore } = wp.data;
 
-class Recipes extends wp.element.Component {
-  constructor( props ) {
-    super( props );
+const DEFAULT_STATE = {
+  stepToggled: {},
+};
+
+const recipes = {
+  'cache': new CacheRecipe(),
+  'wp_super_cache': new WPSuperCacheRecipe(),
+};
+
+const actions = {
+	toggleStep( recipe, step=null ) {
+		return {
+			type: 'TOGGLE_STEP',
+			recipe,
+      step,
+		};
+	},
+};
+
+const store = registerStore( 'ltwp-recipes', {
+	reducer( state = DEFAULT_STATE, action ) {
+    const key = action.step ? action.recipe + '.' + action.step : action.recipe;
+    switch ( action.type ) {
+      case 'TOGGLE_STEP':
+        return {
+          ...state,
+          stepToggled: {
+            ...state.stepToggled,
+            [key]: ! state.stepToggled[key],
+          }
+        };
+    }
+    return state;
+  },
+
+  actions,
+
+	selectors: {
+    getRecipes( state ) {
+      return state.recipes;
+    },
+    getStepToggled( state ) {
+      return state.stepToggled;
+    },
+  },
+} );
+
+
+var Recipes = withSelect( ( select, ownProps ) => {
+  const { getRecipes, getStepToggled } = select( 'ltwp-recipes' );
+  return {
+    stepToggled: getStepToggled(),
+    recipes: recipes,
   };
+} )( RecipeList );
 
-  render() {
-		return (
-      <div>
-        <p>
-          {__( 'Optimize your site by following these step by step instructions.', 'ltwp' )}
-        </p>
-        <Recipe done={true} check={new CacheRecipe()}/>
-      </div>
-		);
-	};
-}
+Recipes = withDispatch( ( dispatch, ownProps ) => {
+  const { toggleStep } = dispatch( 'ltwp-recipes' );
+  return {
+    onToggleStep( recipe, step ) {
+      toggleStep( recipe, step );
+    },
+  };
+} )( Recipes );
 
 module.exports = Recipes;

@@ -21,7 +21,6 @@ $border-style: 1px solid #e2e4e7;
   &::before {
     display: block;
     opacity: 0.3;
-    content: "▼";
     width: 0.7em;
     height: 0.7em;
     margin-bottom: 0.5em;
@@ -32,22 +31,12 @@ $border-style: 1px solid #e2e4e7;
 
 .ltwp-recipe__status {
   display: inline-block;
-  background: transparent;
+  background: #f9fbd8;
   border: $border-style;
   border-radius: 2px;
   float: right;
   padding: 0 1em;
   margin: 0 1em;
-}
-
-.ltwp-recipe__content {
-  display: none;
-}
-
-.ltwp-recipe--done {
-  .ltwp-recipe__status {
-    background: #d8fbde;
-  }
 }
 
 .ltwp-recipe--open {
@@ -62,4 +51,27 @@ $border-style: 1px solid #e2e4e7;
     display: block;
     padding: 8px 10px;
   }
+}
+
+.ltwp-recipe:not(.ltwp-recipe--open) {
+  .ltwp-recipe__content {
+    display: none;
+  }
+  .ltwp-recipe__title {
+    border-bottom: none;
+    &::before {
+      content: "▼";
+    }
+  }
+}
+
+.ltwp-recipe--done {
+  .ltwp-recipe__status {
+    background: #d8fbde;
+  }
+}
+
+.ltwp-recipe .ltwp-recipe {
+  margin-right: -10px;
+  border-right: none;
 }

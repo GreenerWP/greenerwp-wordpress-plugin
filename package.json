@@ -10,9 +10,10 @@
 		"watch:css": "npm run build:css --lowtechwp-wordpress-plugin:parcel_build_command=watch"
 	},
 	"devDependencies": {
-		"babel-core": "^6.26.3",
+		"@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+		"babel-core": "^7.0.0-bridge.0",
 		"babel-preset-env": "^1.7.0",
-		"babel-preset-react": "^6.24.1",
+		"babel-preset-react": "^7.0.0-beta.3",
 		"cross-var": "^1.1.0",
 		"parcel": "^1.12.3",
 		"sass": "^1.22.12"
