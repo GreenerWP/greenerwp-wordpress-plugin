@@ -5,7 +5,7 @@ const { __, _x, _n, _nx } = wp.i18n;
 const RecipeList = ( props ) => (
   <div>
     <p>
-      {__( 'Optimize your site by following these step by step instructions.', 'ltwp' )}
+      {__( 'Optimize your site by following these step by step instructions. Click the checkboxes to mark items as done.', 'ltwp' )}
     </p>
     { Object.keys( props.recipes ).map( name => {
         let recipe = props.recipes[name];
