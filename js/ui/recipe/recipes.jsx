@@ -1,6 +1,8 @@
 import RecipeList from './recipe-list.jsx';
 import CacheRecipe from './cache.js';
 import WPSuperCacheRecipe from './wp-super-cache.js';
+import WebP from './web-p';
+import WebPExpress from './web-p-express';
 
 const { withSelect, withDispatch, registerStore } = wp.data;
 
@@ -8,10 +10,13 @@ const DEFAULT_STATE = {
   stepToggled: {},
 };
 
-const recipes = {
-  'cache': new CacheRecipe(),
-  'wp_super_cache': new WPSuperCacheRecipe(),
-};
+var recipes = {};
+[
+  new CacheRecipe(),
+  new WPSuperCacheRecipe(),
+  new WebP(),
+  new WebPExpress(),
+].forEach( instance => recipes[instance.id] = instance );
 
 const actions = {
 	toggleStep( recipe, step=null ) {

@@ -7,7 +7,7 @@ class WPSuperCache {
   constructor() {
     this.id = 'wp_super_cache';
     this.showOnlyAsDependency = true;
-    this.name = __( 'Install WP Super Cache', 'lowtechwp' );
+    this.name = __( 'Install WP Super Cache', 'ltwp' );
     this.description =  __( 'Use the WP Super Cache plugin to cache your sites.', 'ltwp' );
     this.steps = [
       {

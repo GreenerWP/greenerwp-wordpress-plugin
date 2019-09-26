@@ -12,9 +12,9 @@ const Step = ( props ) => {
       </a>;
       break;
     case 'link':
-      out = <a target="_blank" href={step.args.href}>
+      out = <><a target="_blank" href={step.args.href}>
         {step.args.text}
-      </a>;
+      </a><br/>{step.args.description}</>;
       break;
     case 'recipe':
       out = <Recipe {...props} recipe={recipes[step.args.recipe]}/>;

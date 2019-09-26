@@ -1,6 +1,7 @@
 const { __, _x, _n, _nx } = wp.i18n;
 
 import Step from './step.jsx';
+import MarkdownParser from '../../tools/markdown-parser.js';
 
 class Recipe extends wp.element.Component {
   constructor( props ) {
@@ -33,19 +34,26 @@ class Recipe extends wp.element.Component {
 
   allStepsDone( recipeId ) {
     var allStepsDone = true;
-    this.props.recipes[recipeId].steps.forEach( ( step ) => {
-      var stepDone;
-      if ( step.type === 'recipe' ) {
-        stepDone = this.allStepsDone( step.args.recipe );
-      } else {
-        stepDone = this.props.stepToggled[recipeId + '.' + step.id];
-      }
-      if ( ! stepDone ) {
-        allStepsDone = false;
-      }
-    } );
+    if ( this.props.recipes[recipeId].steps ) {
+      this.props.recipes[recipeId].steps.forEach( ( step ) => {
+        var stepDone;
+        if ( step.type === 'recipe' ) {
+          stepDone = this.allStepsDone( step.args.recipe );
+        } else {
+          stepDone = this.props.stepToggled[recipeId + '.' + step.id];
+        }
+        if ( ! stepDone ) {
+          allStepsDone = false;
+        }
+      } );
+    }
     return allStepsDone;
   };
+
+  parseMarkDown(text) {
+    var parser = new MarkdownParser();
+    return <span dangerouslySetInnerHTML={ { __html: parser.parse( text ) } }/>;
+  }
 
   render() {
     var status;
@@ -78,7 +86,7 @@ class Recipe extends wp.element.Component {
             { allStepsDone ? __( 'Done', 'ltwp' ) : __( 'Todo', 'ltwp' )}</span>
         </button>
         <div className="ltwp-recipe__content">
-          <p className="ltwp-recipe__description">{recipe.description}</p>
+          <p className="ltwp-recipe__description">{ this.parseMarkDown( recipe.description ) }</p>
           { recipe.evaluate && <p className="">{__( 'Status', 'lowtechwp' )}: {status}</p> }
           <ul>
             { recipe.steps.map( step => { step.done = false; return <Step key={step.id} {...this.props} step={step} />; } ) }
