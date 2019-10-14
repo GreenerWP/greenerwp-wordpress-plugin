@@ -1,5 +1,7 @@
 import RecipeList from './recipe-list.jsx';
 import CacheRecipe from './cache.js';
+import DisableEmojisRecipe from './disable-emojis.js';
+import PluginDisableEmojisRecipe from './plugin-disable-emojis.js';
 import WPSuperCacheRecipe from './wp-super-cache.js';
 import WebP from './web-p';
 import WebPExpress from './web-p-express';
@@ -13,6 +15,8 @@ const DEFAULT_STATE = {
 var recipes = {};
 [
   new CacheRecipe(),
+  new DisableEmojisRecipe(),
+  new PluginDisableEmojisRecipe(),
   new WPSuperCacheRecipe(),
   new WebP(),
   new WebPExpress(),
