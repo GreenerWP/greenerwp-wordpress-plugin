@@ -13,3 +13,8 @@ $plugin['ui_admin_recipes'] = function ( $plugin ) {
     $plugin[ 'template_renderer' ]
   );
 };
+
+$plugin['ui_admin_recipes_controller'] = function ( $plugin ) {
+  return new LTWP\UI\Admin\RecipesController(
+  );
+};

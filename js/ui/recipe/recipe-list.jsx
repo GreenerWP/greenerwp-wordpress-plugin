@@ -7,7 +7,17 @@ const RecipeList = ( props ) => (
     <p>
       {__( 'Optimize your site by following these step by step instructions. Click the checkboxes to mark items as done.', 'ltwp' )}
     </p>
-    { Object.keys( props.recipes ).map( name => {
+    { props.isLoading && (
+    <p>
+      {__( 'Loading settings...', 'ltwp' )}
+    </p>
+    ) }
+		{ props.hasError && (
+			<p>
+				{__( 'Could not load saved settings.', 'ltwp' )}
+			</p>
+		) }
+    { ! props.isLoading && ! props.hasError && Object.keys( props.recipes ).map( name => {
         let recipe = props.recipes[name];
         if ( recipe.showOnlyAsDependency ) {
           return null;

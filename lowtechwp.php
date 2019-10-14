@@ -32,7 +32,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 spl_autoload_register( 'ltwp_autoloader' );
 function ltwp_autoloader( $class_name ) {
-  if ( false !== strpos( $class_name, 'LTWP' ) ) {
+  if ( false !== strpos( $class_name, 'LTWP\\' ) ) {
     $class_name = preg_replace( '/^LTWP\\\\/', '', $class_name );
 		$classes_dir = realpath( plugin_dir_path( __FILE__ ) ) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR;
     $class_file = str_replace( '\\', DIRECTORY_SEPARATOR, $class_name ) . '.php';
