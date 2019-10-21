@@ -6,8 +6,11 @@
 	"scripts": {
 		"build:js": "cross-var parcel $npm_package_config_parcel_build_command --public-url . -d dist/js/ui/admin/ -o page.js js/ui/admin/page.js",
 		"watch:js": "npm run build:js --lowtechwp-wordpress-plugin:parcel_build_command=watch",
-		"build:css": "cross-var parcel $npm_package_config_parcel_build_command --public-url . -d dist/css/ -o admin.css scss/admin.scss",
-		"watch:css": "npm run build:css --lowtechwp-wordpress-plugin:parcel_build_command=watch",
+		"build:css-admin": "cross-var parcel $npm_package_config_parcel_build_command --public-url . -d dist/css/ -o admin.css scss/admin.scss",
+		"build:css-frontend": "cross-var parcel $npm_package_config_parcel_build_command --public-url . -d dist/css/ -o frontend.css scss/frontend.scss",
+		"build:css": "npm run build:css-admin && npm run build:css-frontend",
+		"watch:css-admin": "npm run build:css-admin --lowtechwp-wordpress-plugin:parcel_build_command=watch",
+		"watch:css-frontend": "npm run build:css-frontend --lowtechwp-wordpress-plugin:parcel_build_command=watch",
 		"test": "jest"
 	},
 	"devDependencies": {

@@ -29,6 +29,12 @@ class Frontend {
     ];
   }
 
+  public function enqueue_style( $handle, $path ) {
+    $this->styles[$handle] = [
+      'path' => $path,
+    ];
+  }
+
   public function enqueue_admin_style( $handle, $path ) {
     $this->admin_styles[$handle] = [
       'path' => $path,
@@ -38,7 +44,9 @@ class Frontend {
   public function run() {
 		add_action( 'wp_enqueue_scripts', [ $this, 'on_enqueue_scripts' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'on_enqueue_admin_scripts' ] );
-  }
+
+		$this->enqueue_style( 'lowtechwp-frontend', 'frontend.css' );
+	}
 
   public function on_enqueue_scripts() {
     $this->enqueue_scripts();

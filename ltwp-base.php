@@ -28,3 +28,7 @@ $plugin['frontend'] = function ( $plugin ) {
 $plugin['template_renderer'] = function ( $plugin ) {
   return new LTWP\TemplateRenderer( $plugin['template_settings'] );
 };
+
+$plugin['preview_filter'] = function ( $plugin ) {
+  return new LTWP\Images\PreviewFilter();
+};
