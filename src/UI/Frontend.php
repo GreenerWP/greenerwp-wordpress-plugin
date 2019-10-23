@@ -46,6 +46,9 @@ class Frontend {
 		add_action( 'admin_enqueue_scripts', [ $this, 'on_enqueue_admin_scripts' ] );
 
 		$this->enqueue_style( 'lowtechwp-frontend', 'frontend.css' );
+    $this->enqueue_script(
+      'lowtechwp-frontend', 'frontend.js',
+      [ 'wp-i18n' ] );
 	}
 
   public function on_enqueue_scripts() {

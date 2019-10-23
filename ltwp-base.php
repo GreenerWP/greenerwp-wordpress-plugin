@@ -32,3 +32,7 @@ $plugin['template_renderer'] = function ( $plugin ) {
 $plugin['preview_filter'] = function ( $plugin ) {
   return new LTWP\Images\PreviewFilter();
 };
+
+$plugin['weather'] = function ( $plugin ) {
+  return new LTWP\Weather();
+};
