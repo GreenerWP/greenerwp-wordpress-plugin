@@ -44,9 +44,13 @@ class StatusController {
 	 * @param WP_REST_Request $request Current request.
 	 */
 	public function get_status( $request ) {
-		return [
+		$response = [
 			'weather' => $this->weather->get(),
 			'profile' => 'charging',
 		];
+		$result = new \WP_REST_Response( $response, 200 );
+		$result->set_headers( [
+			'Cache-Control' => 'max-age=' . 5 * MINUTE_IN_SECONDS ] );
+		return $result;
 	}
 }
