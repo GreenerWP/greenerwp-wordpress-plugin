@@ -2,7 +2,7 @@ import RecipeList from './recipe-list.jsx';
 import CacheRecipe from './cache.js';
 import DisableEmojisRecipe from './disable-emojis.js';
 import PluginDisableEmojisRecipe from './plugin-disable-emojis.js';
-import { Store, withSelect, withDispatch } from './store';
+import { Store, withSelect, withDispatch, retrieveRecipeStates, saveRecipeStates } from '../store';
 import WPSuperCacheRecipe from './wp-super-cache.js';
 import WebP from './web-p';
 import WebPExpress from './web-p-express';
@@ -18,7 +18,7 @@ var recipes = {};
 ].forEach( instance => recipes[instance.id] = instance );
 
 var Recipes = withSelect( ( select, ownProps ) => {
-  const { hasError, getRecipes, getStepToggled, isLoading } = select( 'ltwp-recipes' );
+  const { hasError, getRecipes, getStepToggled, isLoading } = select( 'ltwp' );
   return {
     isLoading: isLoading(),
     stepToggled: getStepToggled(),
@@ -28,12 +28,14 @@ var Recipes = withSelect( ( select, ownProps ) => {
 } )( RecipeList );
 
 Recipes = withDispatch( ( dispatch, ownProps ) => {
-  const { toggleStep } = dispatch( 'ltwp-recipes' );
+  const { toggleStep } = dispatch( 'ltwp' );
   return {
     onToggleStep( recipe, step ) {
       toggleStep( recipe, step );
     },
   };
 } )( Recipes );
+
+retrieveRecipeStates();
 
 module.exports = Recipes;

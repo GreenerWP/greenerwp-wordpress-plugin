@@ -3,7 +3,6 @@
 import ProfileIndicator from "./profile/indicator.js";
 
 var init = function( status ) {
-	console.log( status );
 	new ProfileIndicator( {
 		weather: status.weather,
 		profile: status.profile,

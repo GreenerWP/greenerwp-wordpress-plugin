@@ -54,9 +54,10 @@ function ltwp_init() {
   $plugin['url'] = plugin_dir_url( __FILE__ );
 
   require __DIR__ . '/ltwp-base.php';
+  require __DIR__ . '/ltwp-profile.php';
   require __DIR__ . '/ltwp-ui-admin.php';
-
   require __DIR__ . '/ltwp-ui-frontend.php';
+
   $plugin->run();
 
   global $ltwp;

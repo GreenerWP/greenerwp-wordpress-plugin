@@ -5,8 +5,9 @@ namespace LTWP\UI\Frontend;
  * REST controller for providing webside status.
  */
 class StatusController {
-	public function __construct( $weather ) {
+	public function __construct( $weather, $profile_status ) {
 		$this->weather = $weather;
+		$this->profile_status = $profile_status;
 		$this->namespace = '/ltwp/v1';
 	}
 
@@ -46,7 +47,7 @@ class StatusController {
 	public function get_status( $request ) {
 		$response = [
 			'weather' => $this->weather->get(),
-			'profile' => 'charging',
+			'profile' => $this->profile_status->get_active()::id,
 		];
 		$result = new \WP_REST_Response( $response, 200 );
 		$result->set_headers( [

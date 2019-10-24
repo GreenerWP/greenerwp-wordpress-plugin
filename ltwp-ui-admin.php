@@ -18,3 +18,15 @@ $plugin['ui_admin_recipes_controller'] = function ( $plugin ) {
   return new LTWP\UI\Admin\RecipesController(
   );
 };
+
+$plugin['ui_admin_settings'] = function ( $plugin ) {
+  return new LTWP\UI\Admin\Settings(
+    $plugin[ 'frontend' ],
+    $plugin[ 'template_renderer' ]
+  );
+};
+
+$plugin['ui_admin_settings_controller'] = function ( $plugin ) {
+  return new LTWP\UI\Admin\SettingsController(
+  );
+};

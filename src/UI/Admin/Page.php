@@ -17,9 +17,9 @@ class Page {
 		add_action( 'admin_menu', [ $this, 'add_admin_menu' ] );
     $this->frontend->enqueue_admin_script(
       'lowtechwp-ui-admin-page', 'ui/admin/page.js',
-      [ 'wp-i18n', 'wp-api', 'wp-element', 'wp-data', 'wp-redux-routine' ] );
+      [ 'wp-i18n', 'wp-api', 'wp-components', 'wp-element', 'wp-data', 'wp-redux-routine' ] );
     $this->frontend->enqueue_admin_style(
-      'lowtechwp-ui-admin', 'admin.css');
+      'lowtechwp-ui-admin', 'admin.css', [ 'wp-components' ] );
   }
 
   public function add_admin_menu() {

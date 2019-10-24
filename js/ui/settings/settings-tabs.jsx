@@ -1,10 +1,11 @@
 import ProfilesTab from './profiles-tab.jsx';
+const { Button } = wp.components;
 
 const { __, _x, _n, _nx } = wp.i18n;
 
 const SettingsTabs = ( props ) => {
 	var tabs = [
-		<ProfilesTab/>,
+		<ProfilesTab key="profiles-tab" {...props}/>,
 	];
 	return (
 		<div>
@@ -19,6 +20,9 @@ const SettingsTabs = ( props ) => {
 					</p>
 			) }
 			{ ! props.isLoading && ! props.hasError && tabs }
+			<Button isPrimary disabled={props.isSaving} isBusy={props.isSaving} onClick={props.saveSettings}>
+				{ __( 'Save', 'ltwp' ) }
+			</Button>
 		</div>
 	);
 };

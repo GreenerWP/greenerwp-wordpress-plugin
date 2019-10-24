@@ -1,33 +1,29 @@
 import SettingsTabs from './settings-tabs.jsx';
-// import { Store, withSelect, withDispatch } from './store';
+import { Store, withSelect, withDispatch, retrieveSettings, saveSettings } from '../store';
 
-// var settings = {};
-// [
-//   new CacheRecipe(),
-//   new DisableEmojisRecipe(),
-//   new PluginDisableEmojisRecipe(),
-//   new WPSuperCacheRecipe(),
-//   new WebP(),
-//   new WebPExpress(),
-// ].forEach( instance => settings[instance.id] = instance );
+var applyWithSelect = withSelect( ( select, ownProps ) => {
+  const { hasError, getSettings, isLoading, isSaving } = select( 'ltwp' );
+  return {
+		hasError: hasError(),
+    isLoading: isLoading(),
+    isSaving: isSaving(),
+    settings: getSettings(),
+  };
+} );
 
-// var Settings = withSelect( ( select, ownProps ) => {
-//   const { hasError, getSettings, getStepToggled, isLoading } = select( 'ltwp-settings' );
-//   return {
-//     isLoading: isLoading(),
-//     stepToggled: getStepToggled(),
-//     hasError: hasError(),
-//     settings: settings,
-//   };
-// } )( RecipeList );
+var applyWithDispatch = withDispatch( ( dispatch, ownProps ) => {
+	const { updateSetting } = dispatch( 'ltwp' );
+  return {
+		updateSetting( key, value) {
+			updateSetting( key, value );
+		},
+		saveSettings: saveSettings,
+  };
+} );
 
-// Settings = withDispatch( ( dispatch, ownProps ) => {
-//   const { toggleStep } = dispatch( 'ltwp-settings' );
-//   return {
-//     onToggleStep( recipe, step ) {
-//       toggleStep( recipe, step );
-//     },
-//   };
-// } )( Settings );
+retrieveSettings();
 
-module.exports = SettingsTabs;
+module.exports = wp.compose.compose(
+	applyWithSelect,
+	applyWithDispatch,
+)( SettingsTabs );

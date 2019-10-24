@@ -35,9 +35,10 @@ class Frontend {
     ];
   }
 
-  public function enqueue_admin_style( $handle, $path ) {
+  public function enqueue_admin_style( $handle, $path, $deps ) {
     $this->admin_styles[$handle] = [
       'path' => $path,
+      'deps' => $deps,
     ];
   }
 
@@ -75,7 +76,7 @@ class Frontend {
       $style_path = $this->settings['css_base_path'] . '/' . $args['path'];
       wp_enqueue_style(
         $handle, $style_url,
-        [], filemtime( $style_path ) );
+        $args['deps'] ?? [], filemtime( $style_path ) );
     }
   }
 }
