@@ -11,7 +11,6 @@ class Recipe extends wp.element.Component {
       wasOpenBefore: false,
     };
     this.onTitleClick = this.onTitleClick.bind( this );
-    this.onToggleStep = this.onToggleStep.bind( this );
   };
 
   onTitleClick( event ) {
@@ -28,9 +27,6 @@ class Recipe extends wp.element.Component {
       wasOpenBefore: false,
     }; } );
   }
-
-  onToggleStep( recipe, step ) {
-  };
 
   allStepsDone( recipeId ) {
     var allStepsDone = true;
