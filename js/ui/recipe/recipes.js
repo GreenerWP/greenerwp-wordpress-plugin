@@ -32,6 +32,7 @@ Recipes = withDispatch( ( dispatch, ownProps ) => {
   return {
     onToggleStep( recipe, step ) {
       toggleStep( recipe, step );
+			saveRecipeStates();
     },
   };
 } )( Recipes );
