@@ -49,7 +49,7 @@ class Frontend {
 		$this->enqueue_style( 'lowtechwp-frontend', 'frontend.css' );
     $this->enqueue_script(
       'lowtechwp-frontend', 'frontend.js',
-      [ 'wp-i18n' ] );
+      [ ] );
 	}
 
   public function on_enqueue_scripts() {

@@ -9,6 +9,19 @@ class StatusController {
 		$this->weather = $weather;
 		$this->profile_status = $profile_status;
 		$this->namespace = '/ltwp/v1';
+
+		$this->profile_labels = [
+			'charging' => __( "Charging", "ltwp" ),
+			'battery' => __( "On battery", "ltwp" ),
+			'low' => __( "Low battery", "ltwp" ),
+		];
+
+		$this->weather_labels = [
+			'sunny' => __( "Sunny", "ltwp" ),
+			'cloudy' => __( "Somewhat cloudy", "ltwp" ),
+			'full-cloudy' => __( "Cloudy", "ltwp" ),
+		];
+
 	}
 
 	public function run() {
@@ -45,9 +58,17 @@ class StatusController {
 	 * @param WP_REST_Request $request Current request.
 	 */
 	public function get_status( $request ) {
+		$weather_id = $this->weather->get();
+		$profile_id = $this->profile_status->get_active()::id;
 		$response = [
-			'weather' => $this->weather->get(),
-			'profile' => $this->profile_status->get_active()::id,
+			'weather' => [
+				'id' => $weather_id,
+				'label' => $this->weather_labels[ $weather_id ],
+			],
+			'profile' => [
+				'id' => $profile_id,
+				'label' => $this->profile_labels[ $profile_id ],
+			],
 		];
 		$result = new \WP_REST_Response( $response, 200 );
 		$result->set_headers( [
