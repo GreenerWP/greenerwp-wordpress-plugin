@@ -30,7 +30,7 @@ class Indicator {
 		}
 		var transferCO2ValueSpan = document.querySelector( ".ltwp-indicator__transfer-co2-value" );
 		if ( transferCO2ValueSpan ) {
-			var CO2Value = Math.round( transferred * ( 20 / ( 1024 * 1024 ) ) * 100 ) / 100;
+			var CO2Value = Math.round( transferred * this.args.transferImpactFactors.CO2 * 100 ) / 100;
 			transferCO2ValueSpan.textContent = CO2Value;
 		}
 	}

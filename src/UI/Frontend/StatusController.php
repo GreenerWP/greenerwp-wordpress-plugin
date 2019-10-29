@@ -5,11 +5,14 @@ namespace LTWP\UI\Frontend;
  * REST controller for providing webside status.
  */
 class StatusController {
-	public function __construct( $weather, $profile_status, $template_renderer ) {
+	private $impact_calculator = null;
+
+	public function __construct( $weather, $profile_status, $template_renderer, $impact_calculator ) {
 		$this->weather = $weather;
 		$this->profile_status = $profile_status;
 		$this->namespace = '/ltwp/v1';
 		$this->template_renderer = $template_renderer;
+		$this->impact_calculator = $impact_calculator;
 	}
 
 	public function run() {
@@ -54,6 +57,7 @@ class StatusController {
 					'weather_id' => $weather_id,
 					'profile_id' => $profile_id,
 				] ),
+			'transferImpactFactors' => $this->impact_calculator->get_transfer_impact_factors(),
 		];
 		$result = new \WP_REST_Response( $response, 200 );
 		$result->set_headers( [

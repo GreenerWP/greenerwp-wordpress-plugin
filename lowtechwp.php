@@ -55,6 +55,7 @@ function ltwp_init() {
 
   require __DIR__ . '/ltwp-base.php';
   require __DIR__ . '/ltwp-profile.php';
+  require __DIR__ . '/ltwp-tools.php';
   require __DIR__ . '/ltwp-ui-admin.php';
   require __DIR__ . '/ltwp-ui-frontend.php';
 
