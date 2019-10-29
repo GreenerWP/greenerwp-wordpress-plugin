@@ -5,23 +5,11 @@ namespace LTWP\UI\Frontend;
  * REST controller for providing webside status.
  */
 class StatusController {
-	public function __construct( $weather, $profile_status ) {
+	public function __construct( $weather, $profile_status, $template_renderer ) {
 		$this->weather = $weather;
 		$this->profile_status = $profile_status;
 		$this->namespace = '/ltwp/v1';
-
-		$this->profile_labels = [
-			'charging' => __( "Charging", "ltwp" ),
-			'battery' => __( "On battery", "ltwp" ),
-			'low' => __( "Low battery", "ltwp" ),
-		];
-
-		$this->weather_labels = [
-			'sunny' => __( "Sunny", "ltwp" ),
-			'cloudy' => __( "Somewhat cloudy", "ltwp" ),
-			'full-cloudy' => __( "Cloudy", "ltwp" ),
-		];
-
+		$this->template_renderer = $template_renderer;
 	}
 
 	public function run() {
@@ -61,14 +49,11 @@ class StatusController {
 		$weather_id = $this->weather->get();
 		$profile_id = $this->profile_status->get_active()::id;
 		$response = [
-			'weather' => [
-				'id' => $weather_id,
-				'label' => $this->weather_labels[ $weather_id ],
-			],
-			'profile' => [
-				'id' => $profile_id,
-				'label' => $this->profile_labels[ $profile_id ],
-			],
+			'widgetHTML' => $this->template_renderer->get_rendered(
+				'frontend/status-widget', [
+					'weather_id' => $weather_id,
+					'profile_id' => $profile_id,
+				] ),
 		];
 		$result = new \WP_REST_Response( $response, 200 );
 		$result->set_headers( [
