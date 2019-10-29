@@ -18,9 +18,9 @@ class Indicator {
 
 		var transferred = 0;
 		for ( var i=0; i < list.length; i++ ) {
-			console.log("== Resource[" + i + "] - " + list[i].name);
+			// console.log("== Resource[" + i + "] - " + list[i].name);
 			if ( "transferSize" in list[i] ) {
-				console.log("... transferSize[" + i + "] = " + list[i].transferSize);
+				// console.log("... transferSize[" + i + "] = " + list[i].transferSize);
 				transferred += list[i].transferSize;
 			}
 		}
