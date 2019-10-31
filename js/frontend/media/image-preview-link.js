@@ -5,7 +5,6 @@ class ImagePreviewLink {
   constructor( args ) {
 		this.args = args;
 		this.render();
-		console.log( 'hey' );
 	}
 	render() {
 	};
