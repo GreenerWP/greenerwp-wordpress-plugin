@@ -1,5 +1,11 @@
 <?php
 
+$plugin['ui_admin_dashboard_link'] = function ( $plugin ) {
+  return new LTWP\UI\Admin\DashboardLink(
+		$plugin['basename']
+	);
+};
+
 $plugin['ui_admin_page'] = function ( $plugin ) {
   return new LTWP\UI\Admin\Page(
     $plugin[ 'frontend' ],
