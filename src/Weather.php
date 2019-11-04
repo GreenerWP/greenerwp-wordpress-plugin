@@ -5,10 +5,21 @@ namespace LTWP;
  * Implements weather info retrieval.
  */
 class Weather {
-	private const TRANSIENT_WEATHER_DATA = 'ltwp_weather_data';
+	const TRANSIENT_WEATHER_DATA = 'ltwp_weather_data';
+
+	public function is_configured() {
+		$city = get_option( 'ltwp_weather_location', null ) ;
+		$api_key = get_option( 'ltwp_weather_api_key', null ) ;
+		return $city && $api_key;
+	}
 
 	public function fetch_weather_data() {
-		$jsonurl = "http://api.openweathermap.org/data/2.5/weather?q=" . OPEN_WEATHER_CITY . "&APPID=" . OPEN_WEATHER_API_KEY;
+		$city = get_option( 'ltwp_weather_location', null ) ;
+		$api_key = get_option( 'ltwp_weather_api_key', null ) ;
+		if ( ! $city || ! $api_key ) {
+			return;
+		}
+		$jsonurl = "http://api.openweathermap.org/data/2.5/weather?q=$city&APPID=$api_key";
 		$json = file_get_contents( $jsonurl );
 		$weather = json_decode( $json );
 		$kelvin = $weather->main->temp;

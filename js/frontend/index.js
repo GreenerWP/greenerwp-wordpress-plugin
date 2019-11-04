@@ -8,7 +8,7 @@ var init = function( status ) {
 
 fetch( '/wp-json/ltwp/v1/status', {} )
 	.then( response => response.json() )
-	.then( response => init( response ) )
+	.then( response => response.widgetHTML && init( response ) )
 	.catch( error => console.log( error ) );
 
 require( "./media/index.js" );

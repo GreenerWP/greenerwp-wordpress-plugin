@@ -6,12 +6,12 @@ namespace LTWP\Tools;
  */
 class ResourceImpactCalculator {
 	// https://alistapart.com/article/sustainable-web-design/
-	private const WH_PER_BYTE = 13000/1024/1024/1024;
+	const WH_PER_BYTE = 13000/1024/1024/1024;
 
 	// CO2 in grams per kWh
 	// German power mix 2017
 	// https://www.umweltbundesamt.de/sites/default/files/medien/1410/publikationen/2018-05-04_climate-change_11-2018_strommix-2018_0.pdf
-	private const G_CO2_PER_WH = 0.489;
+	const G_CO2_PER_WH = 0.489;
 
 	/**
 	 * Returns the factors used for calculating transfer impacts.

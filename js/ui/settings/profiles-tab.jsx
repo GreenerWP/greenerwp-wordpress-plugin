@@ -7,7 +7,7 @@ const ProfilesTab = ( props ) => {
 			<h2>{__( 'Profiles', 'ltwp' )}</h2>
 			<h3>{__( 'Indicator', 'ltwp' )}</h3>
 			<p>
-				{__( 'The indicator uses weather data from OpenWeatherMap.', 'ltwp' )}
+				{__( 'The indicator uses weather data from OpenWeatherMap. Leave empty to not use the indicator widget.', 'ltwp' )}
 				<ul>
 					<li>
 						<a target="_blank" href="https://openweathermap.org/users/sign_up">

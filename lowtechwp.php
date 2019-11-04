@@ -3,9 +3,9 @@
  * Plugin Name: LowTechWP
  * Plugin URI: https://lowtechwp.org
  * Description: Assists you in creating sustainable WordPress websites.
- * Version: 0.0.1
+ * Version: 0.0.2
  * Requires at least: 5.2.3
- * Requires PHP: 7.2
+ * Requires PHP: 7.0
  * Author: Christian Neumann
  * Author URI: https://utopicode.de
  * License: GPL v2 or later
@@ -28,7 +28,7 @@
  * along with LowTechWP. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
  */
 
-require __DIR__ . '/vendor/autoload.php';
+/* require __DIR__ . '/vendor/autoload.php'; */
 
 spl_autoload_register( 'ltwp_autoloader' );
 function ltwp_autoloader( $class_name ) {
@@ -52,6 +52,7 @@ function ltwp_init() {
   $plugin = new LTWP\Plugin();
   $plugin['path'] = realpath( plugin_dir_path( __FILE__ ) ) . DIRECTORY_SEPARATOR;
   $plugin['url'] = plugin_dir_url( __FILE__ );
+  $plugin['basename'] = plugin_basename( __FILE__ );
 
   require __DIR__ . '/ltwp-base.php';
   require __DIR__ . '/ltwp-profile.php';

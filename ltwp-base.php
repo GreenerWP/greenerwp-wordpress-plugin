@@ -31,7 +31,7 @@ $plugin['template_renderer'] = function ( $plugin ) {
 
 $plugin['preview_filter'] = function ( $plugin ) {
   return new LTWP\Images\PreviewFilter(
-		$plugin['template_renderer'],
+		$plugin['template_renderer']
 	);
 };
 
