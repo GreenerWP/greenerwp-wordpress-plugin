@@ -3,7 +3,7 @@
  * Plugin Name: LowTechWP
  * Plugin URI: https://lowtechwp.org
  * Description: Assists you in creating sustainable WordPress websites.
- * Version: 0.0.2
+ * Version: 0.0.3
  * Requires at least: 5.2.3
  * Requires PHP: 7.0
  * Author: Christian Neumann
