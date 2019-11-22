@@ -25,6 +25,8 @@ The project and plugin is in an early stage and will change rapidly.
 
 = 0.0.2 =
 
+* Updated Readme.
+
 = 0.0.1 =
 
 * Initial release.
