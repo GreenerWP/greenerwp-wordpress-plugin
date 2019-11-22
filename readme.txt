@@ -11,7 +11,7 @@ Assists you in creating sustainable WordPress websites.
 
 == Description ==
 
-LowTechWP is a project assisting to create sustainable WordPress. Currently, it consists of "recipes" in the admin area that give suggestions how to optimize a WordPress site. Also, it allows you to show a widget with the current battery status and weather (for solar powered sites). Another feature is replacing images with low resolution preview images.
+LowTechWP helps building sustainable WordPress websites. Currently, it consists of "recipes" in the admin area that give suggestions on how to optimize your website. Also, it allows you to show a widget with the current battery status and weather (for solar powered sites). Another feature is replacing images with low resolution preview images.
 
 The project and plugin is in an early stage and will change rapidly.
 
