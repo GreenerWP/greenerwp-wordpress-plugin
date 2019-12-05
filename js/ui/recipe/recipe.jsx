@@ -82,8 +82,14 @@ class Recipe extends wp.element.Component {
             { allStepsDone ? __( 'Done', 'greenerwp' ) : __( 'Todo', 'greenerwp' )}</span>
         </button>
         <div className="greenerwp-recipe__content">
-          <p className="greenerwp-recipe__description">{ this.parseMarkDown( recipe.description ) }</p>
-          { recipe.evaluate && <p className="">{__( 'Status', 'greenerwp' )}: {status}</p> }
+          <p className="greenerwp-recipe__description">
+						{ this.parseMarkDown( recipe.description ) }
+					</p>
+					{ recipe.guide &&
+						<p><a target="_blank" href={ "http://greenerwp.net/guides/" + recipe.guide }>
+							{ __( 'Read the complete guide on the greenerWP homepage', 'greenerwp' ) }
+						</a></p> }
+					{ recipe.evaluate && <p className="">{__( 'Status', 'greenerwp' )}: {status}</p> }
           <ul>
             { recipe.steps.map( step => { step.done = false; return <Step key={step.id} {...this.props} step={step} />; } ) }
           </ul>
