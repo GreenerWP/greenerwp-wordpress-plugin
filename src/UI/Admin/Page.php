@@ -23,7 +23,7 @@ class Page {
   }
 
   public function add_admin_menu() {
-    add_menu_page( __( 'GreenerWP', 'greenerwp' ), __( 'GreenerWP', 'greenerwp' ), 'manage_options', 'greenerwp', [ $this, 'render' ] );
+    add_menu_page( __( 'greenerWP', 'greenerwp' ), __( 'greenerWP', 'greenerwp' ), 'manage_options', 'greenerwp', [ $this, 'render' ] );
   }
 
   public function render() {
