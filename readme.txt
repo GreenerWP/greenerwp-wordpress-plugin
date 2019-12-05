@@ -11,7 +11,7 @@ Assists you in creating sustainable WordPress websites.
 
 == Description ==
 
-GreenerWP helps building sustainable WordPress websites. Currently, it consists of "recipes" in the admin area that give suggestions on how to optimize your website. Also, it allows you to show a widget with the current battery status and weather (for solar powered sites). Another feature is replacing images with low resolution preview images.
+greenerWP helps building sustainable WordPress websites. Currently, it consists of "recipes" in the admin area that give suggestions on how to optimize your website. Also, it allows you to show a widget with the current battery status and weather (for solar powered sites). Another feature is replacing images with low resolution preview images.
 
 The project and plugin is in an early stage and will change rapidly.
 
@@ -19,7 +19,7 @@ The project and plugin is in an early stage and will change rapidly.
 
 1. Upload the plugin files to the `/wp-content/plugins/greenerwp` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress
-1. Use the GreenerWP screen to configure and use the plugin
+1. Use the greenerWP screen to configure and use the plugin
 
 == Changelog ==
 
