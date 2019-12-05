@@ -4,6 +4,8 @@
 		"parcel_build_command": "build"
 	},
 	"scripts": {
+		"postinstall": "npm run build",
+		"build": "npm run build:js && npm run build:css",
 		"build:zip": "cd build && zip -r greenerwp.zip greenerwp",
 		"build:dist": "test -d build && rm build -R; mkdir -p build/greenerwp; cp -R dist languages *.php readme.txt src views build/greenerwp",
 		"build:js-admin": "cross-var parcel $npm_package_config_parcel_build_command --public-url . -d dist/js/ui/admin/ -o page.js js/ui/admin/page.js",
