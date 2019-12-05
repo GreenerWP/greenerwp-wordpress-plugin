@@ -7,10 +7,10 @@ class WebP {
   constructor() {
     this.visible = true;
     this.id = 'web_p';
-    this.name = __( 'Use WebP image format', 'ltwp' );
+    this.name = __( 'Use WebP image format', 'greenerwp' );
     this.description =
-      __( '[WebP](https://en.wikipedia.org/wiki/WebP) is an image format which often allows smaller file sizes compared to more popular image formats like JPEG and PNG.', 'ltwp' )
-      + ' ' + __( 'WebP is not supported by [older browsers](https://caniuse.com/#search=webp), but it is possible to serve older image formats as fallback.', 'ltwp' );
+      __( '[WebP](https://en.wikipedia.org/wiki/WebP) is an image format which often allows smaller file sizes compared to more popular image formats like JPEG and PNG.', 'greenerwp' )
+      + ' ' + __( 'WebP is not supported by [older browsers](https://caniuse.com/#search=webp), but it is possible to serve older image formats as fallback.', 'greenerwp' );
     this.steps = [
       {
         type: 'recipe',

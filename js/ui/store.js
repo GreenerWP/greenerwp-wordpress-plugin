@@ -155,7 +155,7 @@ function fetchSettings( state = { isLoading: false }, action ) {
 	return state;
 };
 
-const Store = registerStore( 'ltwp', {
+const Store = registerStore( 'greenerwp', {
 	reducer: combineReducers( {
 		fetchRecipeStates,
 		stepToggled,
@@ -195,7 +195,7 @@ async function retrieveRecipeStates() {
 			'X-WP-Nonce': wpApiSettings.nonce,
 		},
 	};
-	var response = await fetch( wpApiSettings.root + 'ltwp/v1/recipes', opts );
+	var response = await fetch( wpApiSettings.root + 'greenerwp/v1/recipes', opts );
 	var json = await response.json();
 	if ( json ) {
 		Store.dispatch( actions.receiveRecipeStates( json ) );
@@ -212,7 +212,7 @@ async function saveRecipeStates() {
 		method: 'POST',
 		body: JSON.stringify( Store.getState().stepToggled ),
 	};
-	fetch( wpApiSettings.root + 'ltwp/v1/recipes', opts );
+	fetch( wpApiSettings.root + 'greenerwp/v1/recipes', opts );
 }
 
 async function retrieveSettings() {
@@ -222,7 +222,7 @@ async function retrieveSettings() {
 			'X-WP-Nonce': wpApiSettings.nonce,
 		},
 	};
-	var response = await fetch( wpApiSettings.root + 'ltwp/v1/settings', opts );
+	var response = await fetch( wpApiSettings.root + 'greenerwp/v1/settings', opts );
 	var json = await response.json();
 	if ( json ) {
 		Store.dispatch( actions.receiveSettings( json ) );
@@ -240,7 +240,7 @@ async function saveSettings() {
 		method: 'POST',
 		body: JSON.stringify( Store.getState().settings ),
 	};
-	var response = await fetch( wpApiSettings.root + 'ltwp/v1/settings', opts );
+	var response = await fetch( wpApiSettings.root + 'greenerwp/v1/settings', opts );
 	Store.dispatch( actions.savingSettings( false ) );
 }
 

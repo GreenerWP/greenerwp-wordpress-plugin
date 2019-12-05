@@ -3,5 +3,5 @@
  * Template for the settings admin page.
  */
 ?>
-<h1><?php esc_html_e( 'Settings', 'lowtechwp' ) ?></h1>
-<div id="lowtechwp-settings"></div>
+<h1><?php esc_html_e( 'Settings', 'greenerwp' ) ?></h1>
+<div id="greenerwp-settings"></div>

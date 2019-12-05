@@ -18,7 +18,7 @@ var recipes = {};
 ].forEach( instance => recipes[instance.id] = instance );
 
 var Recipes = withSelect( ( select, ownProps ) => {
-  const { hasError, getRecipes, getStepToggled, isLoading } = select( 'ltwp' );
+  const { hasError, getRecipes, getStepToggled, isLoading } = select( 'greenerwp' );
   return {
     isLoading: isLoading(),
     stepToggled: getStepToggled(),
@@ -28,7 +28,7 @@ var Recipes = withSelect( ( select, ownProps ) => {
 } )( RecipeList );
 
 Recipes = withDispatch( ( dispatch, ownProps ) => {
-  const { toggleStep } = dispatch( 'ltwp' );
+  const { toggleStep } = dispatch( 'greenerwp' );
   return {
     onToggleStep( recipe, step ) {
       toggleStep( recipe, step );

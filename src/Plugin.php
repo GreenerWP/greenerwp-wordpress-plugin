@@ -1,5 +1,5 @@
 <?php
-namespace LTWP;
+namespace GreenerWP;
 
 class Plugin extends Pimple {
   public function run(){

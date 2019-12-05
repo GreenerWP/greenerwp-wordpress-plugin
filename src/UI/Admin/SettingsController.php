@@ -1,12 +1,12 @@
 <?php
-namespace LTWP\UI\Admin;
+namespace GreenerWP\UI\Admin;
 
 /**
  * REST controller for handling settings.
  */
 class SettingsController {
 	public function __construct() {
-		$this->namespace = '/ltwp/v1';
+		$this->namespace = '/greenerwp/v1';
 	}
 
 	public function run() {
@@ -50,14 +50,14 @@ class SettingsController {
       $settings = (array) json_decode( $request->get_body() );
 			foreach ( array_keys( $known_settings ) as $key ) {
 				if ( array_key_exists( $key, $settings ) ) {
-					update_option( 'ltwp_' . $key, $settings[ $key ] );
+					update_option( 'greenerwp_' . $key, $settings[ $key ] );
 				}
 			}
 			return;
     }
 		$settings = [];
 		foreach ( $known_settings as $key => $default ) {
-			$settings[ $key ] = get_option( 'ltwp_' . $key, $default );
+			$settings[ $key ] = get_option( 'greenerwp_' . $key, $default );
 		}
 		return $settings;
 	}

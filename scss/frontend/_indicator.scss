@@ -1,4 +1,4 @@
-.ltwp-indicator {
+.greenerwp-indicator {
 	width: 2em;
 	position: fixed;
 	bottom: 0.5em;
@@ -13,13 +13,13 @@
 	border-radius: 4px 0 0 4px;
 }
 
-.ltwp-indicator__transfer {
+.greenerwp-indicator__transfer {
 	font-size: 0.3em;
 	line-height: 1em;
 }
 
-.ltwp-indicator__profile,
-.ltwp-indicator__weather {
+.greenerwp-indicator__profile,
+.greenerwp-indicator__weather {
 	width: 1em;
 	margin: 0.3em auto 0.1em;
 	color: white;
@@ -31,7 +31,7 @@
 	}
 }
 
-.ltwp-indicator__profile {
+.greenerwp-indicator__profile {
 	position: relative;
 	&::after {
 		position: absolute;
@@ -57,7 +57,7 @@
 }
 
 
-.ltwp-indicator__weather {
+.greenerwp-indicator__weather {
 	&::before {
 		content: "☀";
 	}

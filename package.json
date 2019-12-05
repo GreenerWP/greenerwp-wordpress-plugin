@@ -1,21 +1,21 @@
 {
-	"name": "lowtechwp-wordpress-plugin",
+	"name": "greenerwp-wordpress-plugin",
 	"config": {
 		"parcel_build_command": "build"
 	},
 	"scripts": {
-		"build:zip": "cd build && zip -r lowtechwp.zip lowtechwp",
-		"build:dist": "test -d build && rm build -R; mkdir -p build/lowtechwp; cp -R dist languages *.php readme.txt src views build/lowtechwp",
+		"build:zip": "cd build && zip -r greenerwp.zip greenerwp",
+		"build:dist": "test -d build && rm build -R; mkdir -p build/greenerwp; cp -R dist languages *.php readme.txt src views build/greenerwp",
 		"build:js-admin": "cross-var parcel $npm_package_config_parcel_build_command --public-url . -d dist/js/ui/admin/ -o page.js js/ui/admin/page.js",
-		"watch:js-admin": "npm run build:js-admin --lowtechwp-wordpress-plugin:parcel_build_command=watch",
+		"watch:js-admin": "npm run build:js-admin --greenerwp-wordpress-plugin:parcel_build_command=watch",
 		"build:js-frontend": "cross-var parcel $npm_package_config_parcel_build_command --public-url . -d dist/js/ -o frontend.js js/frontend/index.js",
-		"watch:js-frontend": "npm run build:js-frontend --lowtechwp-wordpress-plugin:parcel_build_command=watch",
+		"watch:js-frontend": "npm run build:js-frontend --greenerwp-wordpress-plugin:parcel_build_command=watch",
 		"build:js": "npm run build:js-admin && npm run build:js-frontend",
 		"build:css-admin": "cross-var parcel $npm_package_config_parcel_build_command --public-url . -d dist/css/ -o admin.css scss/admin.scss",
 		"build:css-frontend": "cross-var parcel $npm_package_config_parcel_build_command --public-url . -d dist/css/ -o frontend.css scss/frontend.scss",
 		"build:css": "npm run build:css-admin && npm run build:css-frontend",
-		"watch:css-admin": "npm run build:css-admin --lowtechwp-wordpress-plugin:parcel_build_command=watch",
-		"watch:css-frontend": "npm run build:css-frontend --lowtechwp-wordpress-plugin:parcel_build_command=watch",
+		"watch:css-admin": "npm run build:css-admin --greenerwp-wordpress-plugin:parcel_build_command=watch",
+		"watch:css-frontend": "npm run build:css-frontend --greenerwp-wordpress-plugin:parcel_build_command=watch",
 		"test": "jest"
 	},
 	"devDependencies": {

@@ -55,7 +55,7 @@ class Recipe extends wp.element.Component {
     var status;
     const recipe = this.props.recipe;
     if ( this.state.isEvaluating ) {
-      status = __( 'Evaluating', 'lowtechwp' ) + '…';
+      status = __( 'Evaluating', 'greenerwp' ) + '…';
     } else {
       const results = this.state.results;
       switch ( results.status ) {
@@ -73,17 +73,17 @@ class Recipe extends wp.element.Component {
 
     const allStepsDone = this.allStepsDone( recipe.id );
     return (
-      <div className={"ltwp-recipe "
-                    + ( allStepsDone ? 'ltwp-recipe--done ' : '' )
-                    + ( this.state.open ? 'ltwp-recipe--open ' : '' )}>
-        <button className="ltwp-recipe__title" onClick={this.onTitleClick}>
+      <div className={"greenerwp-recipe "
+                    + ( allStepsDone ? 'greenerwp-recipe--done ' : '' )
+                    + ( this.state.open ? 'greenerwp-recipe--open ' : '' )}>
+        <button className="greenerwp-recipe__title" onClick={this.onTitleClick}>
           {recipe.name}
-          <span className="ltwp-recipe__status">
-            { allStepsDone ? __( 'Done', 'ltwp' ) : __( 'Todo', 'ltwp' )}</span>
+          <span className="greenerwp-recipe__status">
+            { allStepsDone ? __( 'Done', 'greenerwp' ) : __( 'Todo', 'greenerwp' )}</span>
         </button>
-        <div className="ltwp-recipe__content">
-          <p className="ltwp-recipe__description">{ this.parseMarkDown( recipe.description ) }</p>
-          { recipe.evaluate && <p className="">{__( 'Status', 'lowtechwp' )}: {status}</p> }
+        <div className="greenerwp-recipe__content">
+          <p className="greenerwp-recipe__description">{ this.parseMarkDown( recipe.description ) }</p>
+          { recipe.evaluate && <p className="">{__( 'Status', 'greenerwp' )}: {status}</p> }
           <ul>
             { recipe.steps.map( step => { step.done = false; return <Step key={step.id} {...this.props} step={step} />; } ) }
           </ul>

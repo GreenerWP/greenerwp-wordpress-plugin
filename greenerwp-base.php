@@ -1,7 +1,7 @@
 <?php
 
 /* $plugin['frontend_script'] = function( $plugin ) { */
-/* return new LTWP\FrontendScripts( [ */
+/* return new GreenerWP\FrontendScripts( [ */
 /* [ */
 /* 'script_path' => $plugin['url'] . '/js/core.js', */
 /* 'script_version' => filemtime( $plugin['path'] . '/js/core.js' ), */
@@ -15,7 +15,7 @@ $plugin['template_settings'] = [
 ];
 
 $plugin['frontend'] = function ( $plugin ) {
-  return new LTWP\UI\Frontend(
+  return new GreenerWP\UI\Frontend(
     [
       'js_base_url' => $plugin['url'] . '/dist/js',
       'js_base_path' => $plugin['path'] . '/dist/js',
@@ -26,15 +26,15 @@ $plugin['frontend'] = function ( $plugin ) {
 };
 
 $plugin['template_renderer'] = function ( $plugin ) {
-  return new LTWP\TemplateRenderer( $plugin['template_settings'] );
+  return new GreenerWP\TemplateRenderer( $plugin['template_settings'] );
 };
 
 $plugin['preview_filter'] = function ( $plugin ) {
-  return new LTWP\Images\PreviewFilter(
+  return new GreenerWP\Images\PreviewFilter(
 		$plugin['template_renderer']
 	);
 };
 
 $plugin['weather'] = function ( $plugin ) {
-  return new LTWP\Weather();
+  return new GreenerWP\Weather();
 };

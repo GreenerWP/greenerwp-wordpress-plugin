@@ -24,11 +24,11 @@ class Indicator {
 				transferred += list[i].transferSize;
 			}
 		}
-		var transferKBValueSpan = document.querySelector( ".ltwp-indicator__transfer-kb-value" );
+		var transferKBValueSpan = document.querySelector( ".greenerwp-indicator__transfer-kb-value" );
 		if ( transferKBValueSpan ) {
 			transferKBValueSpan.textContent = Math.round( transferred / 1000 );
 		}
-		var transferCO2ValueSpan = document.querySelector( ".ltwp-indicator__transfer-co2-value" );
+		var transferCO2ValueSpan = document.querySelector( ".greenerwp-indicator__transfer-co2-value" );
 		if ( transferCO2ValueSpan ) {
 			var CO2Value = Math.round( transferred * this.args.transferImpactFactors.CO2 * 100 ) / 100;
 			transferCO2ValueSpan.textContent = CO2Value;

@@ -8,7 +8,7 @@ const Step = ( props ) => {
   switch( step.type ) {
     case 'install_plugin':
       out = <a target="_blank" href={"plugin-install.php?s="+step.args.slug+"&tab=search&type=term"}>
-        { sprintf( __( "Install and activate %s", "ltwp" ), step.args.name ) }
+        { sprintf( __( "Install and activate %s", "greenerwp" ), step.args.name ) }
       </a>;
       break;
     case 'link':

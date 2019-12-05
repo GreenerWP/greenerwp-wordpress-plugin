@@ -9,7 +9,7 @@ async function get_token( token ) {
   };
   var response = await fetch( '/', opts );
   var text = await response.text();
-  var match = text.match( /<!-- lowtechwp caching check [\d.]+ [\d]+ -->/ );
+  var match = text.match( /<!-- greenerwp caching check [\d.]+ [\d]+ -->/ );
   if ( match === null ) {
     return null;
   } else {
@@ -20,18 +20,18 @@ async function get_token( token ) {
 /**
  * Checks for an active site cache.
  *
- * Implements a very simple test: It compares the generated '<!-- lowtechp
+ * Implements a very simple test: It compares the generated '<!-- GreenerWP
  * caching check <time> -->' comments for equality on two consecutive requests.
  */
 class Cache {
   constructor() {
     this.visible = true;
     this.id = 'cache';
-    this.name = __( 'Use site caching', 'ltwp' );
-    this.description =  __( 'Without caching, your web server will have to generate your pages on every load, which costs time and energy.', 'ltwp' );
-    this.failedMessage = __( 'There seems to be no caching active for your site.', 'ltwp' );
-    this.passedMessage = __( 'Caching seems to be active for your site.', 'ltwp' );
-    this.errorMessage = __( 'Could not check for caching.', 'ltwp' );
+    this.name = __( 'Use site caching', 'greenerwp' );
+    this.description =  __( 'Without caching, your web server will have to generate your pages on every load, which costs time and energy.', 'greenerwp' );
+    this.failedMessage = __( 'There seems to be no caching active for your site.', 'greenerwp' );
+    this.passedMessage = __( 'Caching seems to be active for your site.', 'greenerwp' );
+    this.errorMessage = __( 'Could not check for caching.', 'greenerwp' );
     this.steps = [
       {
         type: 'recipe',

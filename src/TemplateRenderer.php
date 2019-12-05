@@ -1,5 +1,5 @@
 <?php
-namespace LTWP;
+namespace GreenerWP;
 
 class TemplateRenderer {
   protected $settings_page_properties;

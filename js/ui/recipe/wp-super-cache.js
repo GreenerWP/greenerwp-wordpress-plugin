@@ -7,8 +7,8 @@ class WPSuperCache {
   constructor() {
     this.id = 'wp_super_cache';
     this.showOnlyAsDependency = true;
-    this.name = __( 'Install WP Super Cache', 'ltwp' );
-    this.description =  __( 'Use the WP Super Cache plugin to cache your sites.', 'ltwp' );
+    this.name = __( 'Install WP Super Cache', 'greenerwp' );
+    this.description =  __( 'Use the WP Super Cache plugin to cache your sites.', 'greenerwp' );
     this.steps = [
       {
         type: 'install_plugin',
@@ -22,7 +22,7 @@ class WPSuperCache {
         type: 'link',
         id: 'configure_wp_super_cache',
         args: {
-          text: __( 'Configure WP Super Cache and enable caching', 'ltwp' ),
+          text: __( 'Configure WP Super Cache and enable caching', 'greenerwp' ),
           href: 'options-general.php?page=wpsupercache'
         },
       }

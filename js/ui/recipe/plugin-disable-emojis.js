@@ -6,9 +6,9 @@ const { __, _x, _n, _nx } = wp.i18n;
 class PluginDisableEmojis {
   constructor() {
     this.id = 'plugin_disable_emojis';
-    this.name = __( 'Install Disable Emojis', 'ltwp' );
+    this.name = __( 'Install Disable Emojis', 'greenerwp' );
     this.showOnlyAsDependency = true;
-    this.description = __( 'Use the Disable Emojis plugin to disable emoji replacement.', 'ltwp' );
+    this.description = __( 'Use the Disable Emojis plugin to disable emoji replacement.', 'greenerwp' );
     this.steps = [
       {
         type: 'install_plugin',

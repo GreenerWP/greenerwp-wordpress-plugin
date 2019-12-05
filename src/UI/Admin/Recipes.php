@@ -1,8 +1,8 @@
 <?php
-namespace LTWP\UI\Admin;
+namespace GreenerWP\UI\Admin;
 
 /**
- * Recipes page of LTWP.
+ * Recipes page of GreenerWP.
  */
 class Recipes {
   private $frontend = null;
@@ -20,11 +20,11 @@ class Recipes {
 
   public function add_caching_check_token() {
     // TODO Only output when requested
-    echo '<!-- lowtechwp caching check ' . microtime() . ' -->';
+    echo '<!-- greenerwp caching check ' . microtime() . ' -->';
   }
 
   public function add_admin_menu() {
-    $page = add_submenu_page( 'lowtechwp', __( 'Recipes', 'ltwp' ), __( 'Recipes', 'ltwp' ), 'manage_options', 'lowtechwp_recipes', [ $this, 'render' ] );
+    $page = add_submenu_page( 'greenerwp', __( 'Recipes', 'greenerwp' ), __( 'Recipes', 'greenerwp' ), 'manage_options', 'greenerwp_recipes', [ $this, 'render' ] );
     add_action('load-'.$page, [ $this, 'init_page' ] );
   }
 

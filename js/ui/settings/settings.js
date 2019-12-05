@@ -2,7 +2,7 @@ import SettingsTabs from './settings-tabs.jsx';
 import { Store, withSelect, withDispatch, retrieveSettings, saveSettings } from '../store';
 
 var applyWithSelect = withSelect( ( select, ownProps ) => {
-  const { hasError, getSettings, isLoading, isSaving } = select( 'ltwp' );
+  const { hasError, getSettings, isLoading, isSaving } = select( 'greenerwp' );
   return {
 		hasError: hasError(),
     isLoading: isLoading(),
@@ -12,7 +12,7 @@ var applyWithSelect = withSelect( ( select, ownProps ) => {
 } );
 
 var applyWithDispatch = withDispatch( ( dispatch, ownProps ) => {
-	const { updateSetting } = dispatch( 'ltwp' );
+	const { updateSetting } = dispatch( 'greenerwp' );
   return {
 		updateSetting( key, value) {
 			updateSetting( key, value );

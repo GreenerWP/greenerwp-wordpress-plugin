@@ -1,5 +1,5 @@
 <?php
-namespace LTWP\Tools;
+namespace GreenerWP\Tools;
 
 /**
  * Implements resource impact calculations.

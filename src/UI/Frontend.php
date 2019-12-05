@@ -1,5 +1,5 @@
 <?php
-namespace LTWP\UI;
+namespace GreenerWP\UI;
 
 /**
  * Manages frontend scripts and styles.
@@ -46,9 +46,9 @@ class Frontend {
 		add_action( 'wp_enqueue_scripts', [ $this, 'on_enqueue_scripts' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'on_enqueue_admin_scripts' ] );
 
-		$this->enqueue_style( 'lowtechwp-frontend', 'frontend.css' );
+		$this->enqueue_style( 'greenerwp-frontend', 'frontend.css' );
     $this->enqueue_script(
-      'lowtechwp-frontend', 'frontend.js',
+      'greenerwp-frontend', 'frontend.js',
       [ ] );
 	}
 

@@ -1,5 +1,5 @@
 <?php
-namespace LTWP\Profile;
+namespace GreenerWP\Profile;
 
 /**
  * Implements charging profile.

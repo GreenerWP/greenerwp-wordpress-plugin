@@ -24,7 +24,7 @@
  * THE SOFTWARE.
  */
 
-namespace LTWP;
+namespace GreenerWP;
 
 /**
  * Container main class.

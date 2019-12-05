@@ -1,5 +1,5 @@
 <?php
-namespace LTWP\UI\Frontend;
+namespace GreenerWP\UI\Frontend;
 
 /**
  * REST controller for providing webside status.
@@ -10,7 +10,7 @@ class StatusController {
 	public function __construct( $weather, $profile_status, $template_renderer, $impact_calculator ) {
 		$this->weather = $weather;
 		$this->profile_status = $profile_status;
-		$this->namespace = '/ltwp/v1';
+		$this->namespace = '/greenerwp/v1';
 		$this->template_renderer = $template_renderer;
 		$this->impact_calculator = $impact_calculator;
 	}

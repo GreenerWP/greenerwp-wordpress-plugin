@@ -1,13 +1,13 @@
 $border-style: 1px solid #e2e4e7;
 
-.ltwp-recipe {
+.greenerwp-recipe {
   border: $border-style;
   max-width: 1000px;
   background: white;
   margin-bottom: 10px;
 }
 
-.ltwp-recipe__title {
+.greenerwp-recipe__title {
   color: #72777c;
   background: #FAFAFA;
   display: block;
@@ -30,7 +30,7 @@ $border-style: 1px solid #e2e4e7;
   }
 }
 
-.ltwp-recipe__status {
+.greenerwp-recipe__status {
   display: inline-block;
   background: #f9fbd8;
   border: $border-style;
@@ -40,25 +40,25 @@ $border-style: 1px solid #e2e4e7;
   margin: 0 1em;
 }
 
-.ltwp-recipe--open {
-  .ltwp-recipe__title {
+.greenerwp-recipe--open {
+  .greenerwp-recipe__title {
     border-bottom: $border-style;
     &::before {
       content: "▲";
     }
   }
 
-  .ltwp-recipe__content {
+  .greenerwp-recipe__content {
     display: block;
     padding: 8px 10px;
   }
 }
 
-.ltwp-recipe:not(.ltwp-recipe--open) {
-  .ltwp-recipe__content {
+.greenerwp-recipe:not(.greenerwp-recipe--open) {
+  .greenerwp-recipe__content {
     display: none;
   }
-  .ltwp-recipe__title {
+  .greenerwp-recipe__title {
     border-bottom: none;
     &::before {
       content: "▼";
@@ -66,13 +66,13 @@ $border-style: 1px solid #e2e4e7;
   }
 }
 
-.ltwp-recipe--done {
-  .ltwp-recipe__status {
+.greenerwp-recipe--done {
+  .greenerwp-recipe__status {
     background: #d8fbde;
   }
 }
 
-.ltwp-recipe .ltwp-recipe {
+.greenerwp-recipe .greenerwp-recipe {
   margin-right: -10px;
   border-right: none;
 }

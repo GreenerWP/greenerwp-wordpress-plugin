@@ -11,17 +11,17 @@ const SettingsTabs = ( props ) => {
 		<div>
 			{ props.isLoading && (
 					<p>
-						{__( 'Loading settings...', 'ltwp' )}
+						{__( 'Loading settings...', 'greenerwp' )}
 					</p>
 			) }
 			{ props.hasError && (
 					<p>
-						{__( 'Could not load saved settings.', 'ltwp' )}
+						{__( 'Could not load saved settings.', 'greenerwp' )}
 					</p>
 			) }
 			{ ! props.isLoading && ! props.hasError && tabs }
 			<Button isPrimary disabled={props.isSaving} isBusy={props.isSaving} onClick={props.saveSettings}>
-				{ __( 'Save', 'ltwp' ) }
+				{ __( 'Save', 'greenerwp' ) }
 			</Button>
 		</div>
 	);

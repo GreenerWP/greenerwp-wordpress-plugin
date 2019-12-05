@@ -1,5 +1,5 @@
 <?php
-namespace LTWP\Images;
+namespace GreenerWP\Images;
 
 /**
  * Implement image previews.
@@ -12,7 +12,7 @@ class PreviewFilter {
 	}
 
 	public function run() {
-		add_image_size( 'ltwp-preview', 200 );
+		add_image_size( 'greenerwp-preview', 200 );
 		add_filter( 'the_content', [ $this, 'add_preview_image' ] );
 		add_filter( 'post_thumbnail_html', [ $this, 'filter_thumbnail_html' ], 10, 5 );
 		/* add_filter( 'jpeg_quality', function($arg){return 75;} ); */
@@ -89,7 +89,7 @@ class PreviewFilter {
 	 * Generates the markup for the linked preview image.
 	 */
 	public function generate_preview_image( $image, $image_meta, $attachment_id ) {
-		$preview_src = wp_get_attachment_image_src( $attachment_id, 'ltwp-preview' );
+		$preview_src = wp_get_attachment_image_src( $attachment_id, 'greenerwp-preview' );
 		$image = preg_replace( '/srcset="([^"]+)"/', '', $image );
 		preg_match( '/src="([^"]+)"/', $image, $matches );
 		$old_src = $matches[1];
@@ -98,6 +98,6 @@ class PreviewFilter {
 			'frontend/media/image-preview-controls', [
 				'size' => $this->get_resource_size( $old_src ),
 			] );
-		return '<a class="ltwp-image-preview__link" href="' . $old_src . '">' . $image . $controls . '</a>';
+		return '<a class="greenerwp-image-preview__link" href="' . $old_src . '">' . $image . $controls . '</a>';
 	}
 }

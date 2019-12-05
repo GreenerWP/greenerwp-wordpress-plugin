@@ -1,21 +1,21 @@
 <?php
-namespace LTWP;
+namespace GreenerWP;
 
 /**
  * Implements weather info retrieval.
  */
 class Weather {
-	const TRANSIENT_WEATHER_DATA = 'ltwp_weather_data';
+	const TRANSIENT_WEATHER_DATA = 'greenerwp_weather_data';
 
 	public function is_configured() {
-		$city = get_option( 'ltwp_weather_location', null ) ;
-		$api_key = get_option( 'ltwp_weather_api_key', null ) ;
+		$city = get_option( 'greenerwp_weather_location', null ) ;
+		$api_key = get_option( 'greenerwp_weather_api_key', null ) ;
 		return $city && $api_key;
 	}
 
 	public function fetch_weather_data() {
-		$city = get_option( 'ltwp_weather_location', null ) ;
-		$api_key = get_option( 'ltwp_weather_api_key', null ) ;
+		$city = get_option( 'greenerwp_weather_location', null ) ;
+		$api_key = get_option( 'greenerwp_weather_api_key', null ) ;
 		if ( ! $city || ! $api_key ) {
 			return;
 		}

@@ -14,7 +14,7 @@
   }
 }
 
-.ltwp-image-preview__link {
+.greenerwp-image-preview__link {
 	display: block;
 	cursor: zoom-in;
 	@include scanlines( #000, 2px, 0.2 );
@@ -23,7 +23,7 @@
 	}
 }
 
-.ltwp-image-preview__controls {
+.greenerwp-image-preview__controls {
 	z-index: 1;
 	color: black;
 	font-size: 0.5em;

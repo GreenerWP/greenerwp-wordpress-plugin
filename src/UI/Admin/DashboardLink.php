@@ -1,5 +1,5 @@
 <?php
-namespace LTWP\UI\Admin;
+namespace GreenerWP\UI\Admin;
 
 /**
  * Implements the dashboard link in the plugins screen.
@@ -15,7 +15,7 @@ class DashboardLink {
 
 	function add_link( $links ) {
 		$links[] = '<a href="' .
-							 admin_url( 'admin.php?page=lowtechwp' ) .
+							 admin_url( 'admin.php?page=greenerwp' ) .
 							 '">' . __( 'Dashboard' ) . '</a>';
 		return $links;
 	}

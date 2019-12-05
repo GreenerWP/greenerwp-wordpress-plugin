@@ -1,12 +1,12 @@
 <?php
-namespace LTWP\UI\Admin;
+namespace GreenerWP\UI\Admin;
 
 /**
  * REST controller for handling recipe states.
  */
 class RecipesController {
 	public function __construct() {
-		$this->namespace = '/ltwp/v1';
+		$this->namespace = '/greenerwp/v1';
 	}
 
 	public function run() {
@@ -43,9 +43,9 @@ class RecipesController {
 	 */
 	public function handle_recipes( $request ) {
 		if ( $request->get_method() === 'POST' ) {
-      update_option( 'ltwp_recipes', json_decode( $request->get_body() ) );
+      update_option( 'greenerwp_recipes', json_decode( $request->get_body() ) );
 			return;
     }
-    return get_option( 'ltwp_recipes', [ 'foo' => '' ] );
+    return get_option( 'greenerwp_recipes', [ 'foo' => '' ] );
 	}
 }
