@@ -45,6 +45,7 @@ class SettingsController {
 		$known_settings = [
 			'weather_location' => '',
 			'weather_api_key' => '',
+			'web_fonts_disable' => false,
 		];
 		if ( $request->get_method() === 'POST' ) {
       $settings = (array) json_decode( $request->get_body() );

@@ -23,6 +23,10 @@ The project and plugin is in an early stage and will change rapidly.
 
 == Changelog ==
 
+= 0.0.3 =
+
+* Added option to disable web fonts.
+
 = 0.0.2 =
 
 * Maintenance release.
