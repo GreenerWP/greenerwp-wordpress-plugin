@@ -17,7 +17,9 @@ class DisableWebFonts {
 	public function add_styles() {
 		?>
 	<style>
-		*:not(.ab-icon) { font-family: apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif !important; }
+		*:not(.ab-icon) {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif !important;
+		}
 	</style>
 		<?php
 	}
