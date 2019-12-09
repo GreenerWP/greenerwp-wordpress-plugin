@@ -2,6 +2,11 @@
 /**
  * Template for the image preview controls.
  */
+
+if ( $size < 0 ) {
+	return;
+}
+
 $CO2 = greenerwp( 'tools_resource_impact_calculator' )->get_transfer_impact( $size )['CO2'];
 ?>
 <span class="greenerwp-image-preview__controls">

@@ -72,17 +72,21 @@ class PreviewFilter {
 		return $content;
 	}
 
-	public function get_resource_size( $src ) {
-		$ch = curl_init();
-		curl_setopt( $ch, CURLOPT_URL, $src );
-		curl_setopt( $ch, CURLOPT_NOBODY, true );
-		curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, 5 );
-		curl_setopt( $ch, CURLOPT_TIMEOUT, 10 );
-		if( true === curl_exec( $ch ) ) {
-			$size = curl_getinfo( $ch,  CURLINFO_CONTENT_LENGTH_DOWNLOAD );
+	/**
+	 * Performs a HEAD request to the given URL and returns the content-length.
+	 *
+	 * @param $url The URL to request.
+	 * @returns int The content-length or -1 if there has been an error.
+	 */
+	public function get_resource_size( $url ) {
+		$response = wp_remote_get( $url, [
+			'method' => 'HEAD',
+			'timeout' => 10,
+		] );
+		if ( ! is_wp_error ( $response ) ) {
+			return $response['headers']['content-length'];
 		}
-		curl_close( $ch );
-		return $size;
+		return -1;
 	}
 
 	/**
