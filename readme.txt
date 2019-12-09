@@ -23,6 +23,10 @@ The project and plugin is in an early stage and will change rapidly.
 
 == Changelog ==
 
+= 0.0.4 =
+
+* Added option to overwrite default JPEG quality.
+
 = 0.0.3 =
 
 * Added option to disable web fonts.

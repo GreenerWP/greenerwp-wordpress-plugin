@@ -18,7 +18,6 @@ class PreviewFilter {
 		add_image_size( 'greenerwp-preview', 200 );
 		add_filter( 'the_content', [ $this, 'add_preview_image' ] );
 		add_filter( 'post_thumbnail_html', [ $this, 'filter_thumbnail_html' ], 10, 5 );
-		/* add_filter( 'jpeg_quality', function($arg){return 75;} ); */
   }
 
 	public function filter_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $attr ) {

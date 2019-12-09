@@ -1,5 +1,5 @@
 const { __, _x, _n, _nx } = wp.i18n;
-const { ToggleControl } = wp.components;
+const { TextControl, ToggleControl } = wp.components;
 
 const FrontendTweaksTab = ( props ) => {
 	return (
@@ -28,6 +28,13 @@ const FrontendTweaksTab = ( props ) => {
 			onChange={ ( ) => props.updateSetting( 'web_fonts_disable', ! props.settings[ 'web_fonts_disable' ] ) }
 			checked={ props.settings[ 'web_fonts_disable' ] }/>
 			<h3>{__( 'Images', 'greenerwp' )}</h3>
+			<h4>{__( 'JPEG quality', 'greenerwp' )}</h4>
+			<TextControl
+			label={__( 'JPEG image quality (%)', 'greenerwp' )}
+			onChange={ ( value ) => props.updateSetting( 'jpeg_quality', value ) }
+			help={ __( 'Overwrite WordPress\' default quality for JPEG images. Leave empty to use WordPress\' default, which is 82. Does not apply to already uploaded images. Use the "Regenerate Thumbnails" plugin to recreate thumbnails with the new quality.', 'greenerwp' ) }
+			value={props.settings[ 'jpeg_quality' ]}/>
+			<h4>{__( 'Image previews', 'greenerwp' )}</h4>
 			<ToggleControl
 			label={__( 'Experimental: Enable image previews', 'greenerwp' )}
 			onChange={ ( ) => props.updateSetting( 'image_previews_enabled', ! props.settings[ 'image_previews_enabled' ] ) }

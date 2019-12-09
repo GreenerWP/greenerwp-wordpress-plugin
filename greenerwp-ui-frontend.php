@@ -14,3 +14,7 @@ $plugin['ui_frontend_status_controller'] = function ( $plugin ) {
 $plugin['ui_frontend_tweaks_disable_web_fonts'] = function ( $plugin ) {
   return new Tweaks\DisableWebFonts();
 };
+
+$plugin['ui_frontend_tweaks_jpeg_quality'] = function ( $plugin ) {
+  return new Tweaks\JPEGQuality();
+};
