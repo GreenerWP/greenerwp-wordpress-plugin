@@ -25,6 +25,7 @@ The project and plugin is in an early stage and will change rapidly.
 
 = 0.0.4 =
 
+* Added "Reduce JPEG quality" recipe.
 * Added option to overwrite default JPEG quality.
 
 = 0.0.3 =
