@@ -27,6 +27,16 @@ const FrontendTweaksTab = ( props ) => {
 			label={__( 'Try to disable web fonts', 'greenerwp' )}
 			onChange={ ( ) => props.updateSetting( 'web_fonts_disable', ! props.settings[ 'web_fonts_disable' ] ) }
 			checked={ props.settings[ 'web_fonts_disable' ] }/>
+			<h3>{__( 'Images', 'greenerwp' )}</h3>
+			<ToggleControl
+			label={__( 'Experimental: Enable image previews', 'greenerwp' )}
+			onChange={ ( ) => props.updateSetting( 'image_previews_enabled', ! props.settings[ 'image_previews_enabled' ] ) }
+			checked={ props.settings[ 'image_previews_enabled' ] }/>
+			<p>
+				{
+					__( 'This option will replace images in posts and pages with low quality but zoomable image previews.', 'greenerwp' )
+				}
+			</p>
 		</>
 	);
 };

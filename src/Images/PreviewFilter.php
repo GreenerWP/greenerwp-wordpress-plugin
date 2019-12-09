@@ -12,6 +12,9 @@ class PreviewFilter {
 	}
 
 	public function run() {
+		if ( ! get_option( 'greenerwp_image_previews_enabled', false ) ) {
+			return;
+		}
 		add_image_size( 'greenerwp-preview', 200 );
 		add_filter( 'the_content', [ $this, 'add_preview_image' ] );
 		add_filter( 'post_thumbnail_html', [ $this, 'filter_thumbnail_html' ], 10, 5 );
