@@ -20,8 +20,9 @@ class Weather {
 			return;
 		}
 		$jsonurl = "http://api.openweathermap.org/data/2.5/weather?q=$city&APPID=$api_key";
-		$json = file_get_contents( $jsonurl );
-		$weather = json_decode( $json );
+		$response = wp_remote_get( $jsonurl );
+		$body = wp_remote_retrieve_body( $response );
+		$weather = json_decode( $body );
 		$kelvin = $weather->main->temp;
 		$celcius = $kelvin - 273.15;
 		return $weather;
