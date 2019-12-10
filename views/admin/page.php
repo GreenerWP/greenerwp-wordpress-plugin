@@ -11,4 +11,6 @@
 <p>
   🛈 <?php echo str_replace( '<a>', '<a href="'.admin_url( 'admin.php?page=greenerwp_recipes' ).'">',
                             __( 'To get started, have a look at the <a>recipes</a>! ', 'greenerwp' ) ) ?>
+  <?php echo str_replace( '<a>', '<a target="_blank" href="https://greenerwp.net/guides">',
+                            __( 'Also have a look at <a>our guides</a> to get an overview of the possible optimizations. ', 'greenerwp' ) ) ?>
 </p>
