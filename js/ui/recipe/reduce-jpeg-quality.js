@@ -16,6 +16,7 @@ class ReduceJPEGQuality {
       {
         type: 'link',
         id: 'reduce_jpeg_quality_with_greenerwp',
+				check: (analysis) => { return analysis.greenerwp_jpeg_quality_reduced; },
         args: {
           text: __( 'Configure greenerWP to reduce the default JPEG quality', 'greenerwp' ),
           href: 'admin.php?page=greenerwp_settings'

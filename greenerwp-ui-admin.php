@@ -1,5 +1,11 @@
 <?php
 
+$plugin['ui_admin_analysis_controller'] = function ( $plugin ) {
+  return new GreenerWP\UI\Admin\AnalysisController(
+		$plugin['analysis_checks']
+	);
+};
+
 $plugin['ui_admin_dashboard_link'] = function ( $plugin ) {
   return new GreenerWP\UI\Admin\DashboardLink(
 		$plugin['basename']

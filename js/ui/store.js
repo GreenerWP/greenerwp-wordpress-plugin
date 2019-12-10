@@ -9,6 +9,24 @@ const actions = {
 			step,
 		};
 	},
+	requestAnalysis() {
+		return {
+			type: 'FETCH_ANALYSIS',
+		};
+	},
+	receiveAnalysis( state ) {
+		return {
+			type: 'FETCH_ANALYSIS',
+			status: 'success',
+			response: state,
+		};
+	},
+	receiveAnalysisError( state ) {
+		return {
+			type: 'FETCH_ANALYSIS',
+			status: 'error',
+		};
+	},
 	requestRecipeStates() {
 		return {
 			type: 'FETCH_RECIPESTATES',
@@ -60,6 +78,18 @@ const actions = {
 	},
 };
 
+// Reducer for analysis.
+function analysis( state = { }, action ) {
+	switch ( action.type ) {
+	case 'FETCH_ANALYSIS':
+		switch ( action.status ) {
+		case 'success':
+			return action.response;
+		}
+	}
+	return state;
+};
+
 
 // Reducer for step toggling.
 function stepToggled( state = {}, action ) {
@@ -96,6 +126,31 @@ function settings( state = { weather_location: 'foo' }, action ) {
 	return state;
 };
 
+// Reducer for analysis fetching.
+function fetchAnalysis( state = { isLoading: false }, action ) {
+	switch ( action.type ) {
+	case 'FETCH_ANALYSIS':
+		switch ( action.status ) {
+		case undefined:
+			return {
+				...state,
+				isLoading: true,
+			};
+		case 'success':
+			return {
+				...state,
+				isLoading: false,
+			};
+		case 'error':
+			return {
+				...state,
+				error: true,
+				isLoading: false,
+			};
+		}
+	}
+	return state;
+};
 
 // Reducer for recipeStates fetching.
 function fetchRecipeStates( state = { isLoading: false }, action ) {
@@ -157,7 +212,9 @@ function fetchSettings( state = { isLoading: false }, action ) {
 
 const Store = registerStore( 'greenerwp', {
 	reducer: combineReducers( {
+		fetchAnalysis,
 		fetchRecipeStates,
+		analysis,
 		stepToggled,
 		settings,
 		fetchSettings,
@@ -165,6 +222,9 @@ const Store = registerStore( 'greenerwp', {
 	actions,
 
 	selectors: {
+		getAnalysis( state ) {
+			return state.analysis;
+		},
 		getRecipes( state ) {
 			return state.recipes;
 		},
@@ -179,14 +239,32 @@ const Store = registerStore( 'greenerwp', {
 		},
 		isLoading( state ) {
 			return state.fetchRecipeStates && state.fetchRecipeStates.isLoading
+				|| state.fetchAnalysis && state.fetchAnalysis.isLoading
 				|| state.fetchSettings && state.fetchSettings.isLoading;
 		},
 		hasError( state ) {
 			return state.fetchRecipeStates && state.fetchRecipeStates.error
+				|| state.fetchAnalysis && state.fetchAnalysis.error
 				|| state.fetchSettings && state.fetchSettings.error;
 		},
 	},
 } );
+
+async function retrieveAnalysis() {
+	Store.dispatch( actions.requestAnalysis() );
+	const opts = {
+		headers: {
+			'X-WP-Nonce': wpApiSettings.nonce,
+		},
+	};
+	var response = await fetch( wpApiSettings.root + 'greenerwp/v1/analysis', opts );
+	var json = await response.json();
+	if ( json ) {
+		Store.dispatch( actions.receiveAnalysis( json ) );
+	} else {
+		Store.dispatch( actions.receiveAnalysisError() );
+	}
+}
 
 async function retrieveRecipeStates() {
 	Store.dispatch( actions.requestRecipeStates() );
@@ -244,4 +322,11 @@ async function saveSettings() {
 	Store.dispatch( actions.savingSettings( false ) );
 }
 
-export { Store as default, withSelect, withDispatch, saveRecipeStates, retrieveRecipeStates, saveSettings, retrieveSettings };
+export {
+	Store as default, withSelect, withDispatch,
+	saveRecipeStates,
+	retrieveAnalysis,
+	retrieveRecipeStates,
+	saveSettings,
+	retrieveSettings,
+};

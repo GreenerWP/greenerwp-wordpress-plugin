@@ -12,6 +12,7 @@ class WPSuperCache {
     this.steps = [
       {
         type: 'install_plugin',
+				check: (analysis) => { return analysis.wp_super_cache_active; },
         id: 'install_wp_super_cache',
         args: {
           name: 'WP Super Cache',
@@ -20,6 +21,7 @@ class WPSuperCache {
       },
       {
         type: 'link',
+				check: (analysis) => { return analysis.wp_super_cache_configured; },
         id: 'configure_wp_super_cache',
         args: {
           text: __( 'Configure WP Super Cache and enable caching', 'greenerwp' ),

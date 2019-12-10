@@ -55,6 +55,7 @@ function greenerwp_init() {
   $plugin['basename'] = plugin_basename( __FILE__ );
 
   require __DIR__ . '/greenerwp-base.php';
+  require __DIR__ . '/greenerwp-analysis.php';
   require __DIR__ . '/greenerwp-profile.php';
   require __DIR__ . '/greenerwp-tools.php';
   require __DIR__ . '/greenerwp-ui-admin.php';

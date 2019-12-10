@@ -3,7 +3,7 @@ const { __, _x, _n, _nx } = wp.i18n;
 import Recipe from './recipe.jsx';
 
 const Step = ( props ) => {
-  var { recipe, recipes, step, onToggleStep, stepToggled } = props;
+  var { analysis, recipe, recipes, step, onToggleStep, stepToggled } = props;
   var out = null;
   switch( step.type ) {
     case 'install_plugin':
@@ -22,8 +22,11 @@ const Step = ( props ) => {
     default:
       throw Error( "Unknown recipe type: " + step.type );
   };
+	var hasCheck = 'check' in step;
+	var isChecked = hasCheck && step.check( analysis )
+							 || stepToggled[recipe.id + '.' + step.id] || false;
   return (
-    <li>{ step.type !== 'recipe' ? <input type="checkbox" onChange={(event)=>{onToggleStep(recipe.id, step.id)}} checked={stepToggled[recipe.id + '.' + step.id] || false} /> : null } { out }</li>
+    <li>{ step.type !== 'recipe' ? <input type="checkbox" disabled={ hasCheck } onChange={(event)=>{onToggleStep(recipe.id, step.id)}} checked={ isChecked } /> : null } { out }</li>
   );
 };
 

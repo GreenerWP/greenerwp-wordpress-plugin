@@ -23,6 +23,10 @@ The project and plugin is in an early stage and will change rapidly.
 
 == Changelog ==
 
+= 0.0.5 =
+
+* Added automatic recipe checking.
+
 = 0.0.4 =
 
 * Added "Reduce JPEG quality" recipe.

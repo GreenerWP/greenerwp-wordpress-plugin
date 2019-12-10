@@ -4,7 +4,7 @@ import DisableEmojisRecipe from './disable-emojis.js';
 import DisableWebFonts from './disable-web-fonts.js';
 import ReduceJPEGQuality from './reduce-jpeg-quality.js';
 import PluginDisableEmojisRecipe from './plugin-disable-emojis.js';
-import { Store, withSelect, withDispatch, retrieveRecipeStates, saveRecipeStates } from '../store';
+import { Store, withSelect, withDispatch, retrieveAnalysis, retrieveRecipeStates, saveRecipeStates } from '../store';
 import WPSuperCacheRecipe from './wp-super-cache.js';
 import WebP from './web-p';
 import WebPExpress from './web-p-express';
@@ -22,8 +22,9 @@ var recipes = {};
 ].forEach( instance => recipes[instance.id] = instance );
 
 var Recipes = withSelect( ( select, ownProps ) => {
-  const { hasError, getRecipes, getStepToggled, isLoading } = select( 'greenerwp' );
+  const { hasError, getAnalysis, getRecipes, getStepToggled, isLoading } = select( 'greenerwp' );
   return {
+    analysis: getAnalysis(),
     isLoading: isLoading(),
     stepToggled: getStepToggled(),
     hasError: hasError(),
@@ -41,6 +42,7 @@ Recipes = withDispatch( ( dispatch, ownProps ) => {
   };
 } )( Recipes );
 
+retrieveAnalysis();
 retrieveRecipeStates();
 
 module.exports = Recipes;

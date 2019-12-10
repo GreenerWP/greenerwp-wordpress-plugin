@@ -13,6 +13,7 @@ class PluginDisableEmojis {
       {
         type: 'install_plugin',
         id: 'install_plugin_emoji',
+				check: (analysis) => { return analysis.disable_emojis_active; },
         args: {
           name: 'Disable Emoji',
           slug: 'disable-emoji',

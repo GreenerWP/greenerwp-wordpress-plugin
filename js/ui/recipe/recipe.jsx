@@ -36,8 +36,10 @@ class Recipe extends wp.element.Component {
         if ( step.type === 'recipe' ) {
           stepDone = this.allStepsDone( step.args.recipe );
         } else {
-          stepDone = this.props.stepToggled[recipeId + '.' + step.id];
-        }
+          stepDone =
+						'check' in step && step.check( this.props.analysis )
+						|| this.props.stepToggled[recipeId + '.' + step.id];
+				}
         if ( ! stepDone ) {
           allStepsDone = false;
         }
