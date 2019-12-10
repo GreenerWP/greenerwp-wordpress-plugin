@@ -48,6 +48,7 @@ class SettingsController {
 			'weather_location' => '',
 			'weather_api_key' => '',
 			'web_fonts_disable' => false,
+			'wpcf7_jquery_fix_enabled' => false,
 		];
 		if ( $request->get_method() === 'POST' ) {
       $settings = (array) json_decode( $request->get_body() );

@@ -9,6 +9,7 @@ import { Store, withSelect, withDispatch, retrieveAnalysis, retrieveRecipeStates
 import WPSuperCacheRecipe from './wp-super-cache.js';
 import WebP from './web-p';
 import WebPExpress from './web-p-express';
+import WPCF7 from './plugins/wpcf7.js';
 
 var recipes = {};
 [
@@ -21,6 +22,7 @@ var recipes = {};
   new WPSuperCacheRecipe(),
   new WebP(),
   new WebPExpress(),
+  new WPCF7(),
 ].forEach( instance => recipes[instance.id] = instance );
 
 var Recipes = withSelect( ( select, ownProps ) => {

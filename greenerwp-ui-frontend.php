@@ -18,3 +18,7 @@ $plugin['ui_frontend_tweaks_disable_web_fonts'] = function ( $plugin ) {
 $plugin['ui_frontend_tweaks_jpeg_quality'] = function ( $plugin ) {
   return new Tweaks\JPEGQuality();
 };
+
+$plugin['ui_frontend_tweaks_plugins_wpcf7'] = function ( $plugin ) {
+  return new Tweaks\Plugins\WPCF7();
+};

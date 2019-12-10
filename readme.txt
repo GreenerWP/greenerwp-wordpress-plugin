@@ -11,9 +11,13 @@ Assists you in creating environmentally sustainable WordPress websites.
 
 == Description ==
 
-greenerWP helps building sustainable WordPress websites. Currently, it consists of "recipes" in the admin area that give suggestions on how to optimize your website. Also, it allows you to show a widget with the current battery status and weather (for solar powered sites). Another feature is replacing images with low resolution preview images.
+greenerWP helps building sustainable WordPress websites. It consists of "recipes" in the admin area that give suggestions on how to optimize your website, and various optimization settings.
 
 The project and plugin is in an early stage and will change rapidly.
+
+=== Plugin Optimizations ===
+
+* [Contact Form 7](https://wordpress.org/support/plugin/contact-form-7/): Prevent insertion of scripts and styles on posts and pages without contact form.
 
 == Installation ==
 
@@ -26,7 +30,8 @@ The project and plugin is in an early stage and will change rapidly.
 = 0.0.5 =
 
 * Added automatic recipe checking.
-* Added green hosting recipe
+* Added green hosting recipe.
+* Added option to optimize Contact Form 7's use of styles and scripts.
 
 = 0.0.4 =
 

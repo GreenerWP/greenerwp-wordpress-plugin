@@ -19,6 +19,13 @@ const RecipeList = ( props ) => (
 		) }
     { ! props.isLoading && ! props.hasError && Object.keys( props.recipes ).map( name => {
         let recipe = props.recipes[name];
+				var isVisible = recipe.visible;
+				if ( isVisible instanceof Function ) {
+					isVisible = isVisible( props.analysis );
+				}
+        if ( ! isVisible ) {
+          return null;
+        }
         if ( recipe.showOnlyAsDependency ) {
           return null;
         }
