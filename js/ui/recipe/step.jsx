@@ -11,6 +11,9 @@ const Step = ( props ) => {
         { sprintf( __( "Install and activate %s", "greenerwp" ), step.args.name ) }
       </a>;
       break;
+    case 'text':
+      out = <>{step.args.text}<br/>{step.args.description}</>;
+      break;
     case 'link':
       out = <><a target="_blank" href={step.args.href}>
         {step.args.text}

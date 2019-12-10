@@ -9,12 +9,12 @@ const RecipeList = ( props ) => (
     </p>
     { props.isLoading && (
     <p>
-      {__( 'Loading settings...', 'greenerwp' )}
+      {__( 'Loading recipes...', 'greenerwp' )}
     </p>
     ) }
 		{ props.hasError && (
 			<p>
-				{__( 'Could not load saved settings.', 'greenerwp' )}
+				{__( 'Could not load recipes.', 'greenerwp' )}
 			</p>
 		) }
     { ! props.isLoading && ! props.hasError && Object.keys( props.recipes ).map( name => {

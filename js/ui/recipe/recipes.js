@@ -2,6 +2,7 @@ import RecipeList from './recipe-list.jsx';
 import CacheRecipe from './cache.js';
 import DisableEmojisRecipe from './disable-emojis.js';
 import DisableWebFonts from './disable-web-fonts.js';
+import GreenHosting from './green-hosting.js';
 import ReduceJPEGQuality from './reduce-jpeg-quality.js';
 import PluginDisableEmojisRecipe from './plugin-disable-emojis.js';
 import { Store, withSelect, withDispatch, retrieveAnalysis, retrieveRecipeStates, saveRecipeStates } from '../store';
@@ -14,6 +15,7 @@ var recipes = {};
   new CacheRecipe(),
   new DisableEmojisRecipe(),
   new DisableWebFonts(),
+  new GreenHosting(),
   new PluginDisableEmojisRecipe(),
   new ReduceJPEGQuality(),
   new WPSuperCacheRecipe(),

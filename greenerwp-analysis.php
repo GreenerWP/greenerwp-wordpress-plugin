@@ -10,6 +10,10 @@ $plugin['analysis_emojis'] = function ( $plugin ) {
   return new Emojis();
 };
 
+$plugin['analysis_hosting'] = function ( $plugin ) {
+  return new Hosting();
+};
+
 $plugin['analysis_images'] = function ( $plugin ) {
   return new Images();
 };
@@ -22,6 +26,7 @@ $plugin['analysis_checks'] = function ( $plugin ) {
 	return [
 		$plugin['analysis_caching'],
 		$plugin['analysis_emojis'],
+		$plugin['analysis_hosting'],
 		$plugin['analysis_images'],
 		$plugin['analysis_web_fonts'],
 	];

@@ -26,6 +26,7 @@ The project and plugin is in an early stage and will change rapidly.
 = 0.0.5 =
 
 * Added automatic recipe checking.
+* Added green hosting recipe
 
 = 0.0.4 =
 
