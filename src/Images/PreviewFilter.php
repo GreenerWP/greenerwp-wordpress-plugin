@@ -2,7 +2,7 @@
 namespace GreenerWP\Images;
 
 /**
- * Implement image previews.
+ * Implement image previews and lazyloading.
  */
 class PreviewFilter {
 	private $template_renderer = null;
@@ -15,7 +15,7 @@ class PreviewFilter {
 		if ( ! get_option( 'greenerwp_image_previews_enabled', false ) ) {
 			return;
 		}
-		add_image_size( 'greenerwp-preview', 200 );
+		add_image_size( 'greenerwp-preview', 10 );
 		add_filter( 'the_content', [ $this, 'add_preview_image' ] );
 		add_filter( 'post_thumbnail_html', [ $this, 'filter_thumbnail_html' ], 10, 5 );
   }
@@ -67,7 +67,9 @@ class PreviewFilter {
 			$image_meta = wp_get_attachment_metadata( $attachment_id );
 			$content = str_replace(
 				$image,
-				$this->generate_preview_image( $image, $image_meta, $attachment_id ),
+				$this->generate_preview_image( $image, $image_meta, $attachment_id, [
+					'set_width' => true,
+				] ),
 				$content );
 		}
 
@@ -75,35 +77,44 @@ class PreviewFilter {
 	}
 
 	/**
-	 * Performs a HEAD request to the given URL and returns the content-length.
-	 *
-	 * @param $url The URL to request.
-	 * @returns int The content-length or -1 if there has been an error.
-	 */
-	public function get_resource_size( $url ) {
-		$response = wp_remote_get( $url, [
-			'method' => 'HEAD',
-			'timeout' => 10,
-		] );
-		if ( ! is_wp_error ( $response ) ) {
-			return $response['headers']['content-length'];
-		}
-		return -1;
-	}
-
-	/**
 	 * Generates the markup for the linked preview image.
 	 */
-	public function generate_preview_image( $image, $image_meta, $attachment_id ) {
+	public function generate_preview_image( $image, $image_meta, $attachment_id, $settings=[] ) {
+		$settings = wp_parse_args( $settings, [
+			'set_width' => false,
+		] );
 		$preview_src = wp_get_attachment_image_src( $attachment_id, 'greenerwp-preview' );
-		$image = preg_replace( '/srcset="([^"]+)"/', '', $image );
+		$noscript_image = "<noscript>$image</noscript>";
+		$image = preg_replace( '/srcset="([^"]+)"/', 'data-srcset="\1"', $image );
 		preg_match( '/src="([^"]+)"/', $image, $matches );
 		$old_src = $matches[1];
-		$image = preg_replace( '/src="([^"]+)"/', 'style="width: 100%;" src="' . $preview_src[0] . '"', $image );
+		$width = '';
+		if ( $settings['set_width'] ) {
+			$full_width_src = wp_get_attachment_image_src( $attachment_id, 'full' );
+			$width = 'width="' . $full_width_src[1] . '"';
+		}
+		if ( preg_match( '/width="\d+"/', $image ) ) {
+			$width = '';
+		}
+		$lazy_load = get_option( 'greenerwp_image_previews_lazy_loading', false );
+
+		if ( $lazy_load ) {
+			$image = preg_replace( '/class="([^"]+)"/', 'class="\1 lazyload"', $image );
+		} else {
+			$image = preg_replace( '/class="([^"]+)"/', 'class="\1 greenerwp-image-preview"', $image );
+		}
+		$image = preg_replace( '/src="([^"]+)"/', $width . ' data-src="\1" src="' . $preview_src[0] . '"', $image );
+		preg_match( '/alt="([^"]+)"/', $image, $matches );
+		$alt = $matches[1];
 		$controls = $this->template_renderer->get_rendered(
 			'frontend/media/image-preview-controls', [
-				'size' => $this->get_resource_size( $old_src ),
+				'alt' => $alt,
 			] );
-		return '<a class="greenerwp-image-preview__link" href="' . $old_src . '">' . $image . $controls . '</a>';
+		$ret = $image . $noscript_image . $controls;
+		if ( $lazy_load ) {
+			return $ret;
+		} else {
+			return '<div class="greenerwp-image-preview-wrap">' . $ret . '</div>';
+		}
 	}
 }

@@ -44,6 +44,7 @@ class SettingsController {
 	public function handle_settings( $request ) {
 		$known_settings = [
 			'image_previews_enabled' => false,
+			'image_previews_lazy_loading' => false,
 			'jpeg_quality' => '',
 			'weather_location' => '',
 			'weather_api_key' => '',

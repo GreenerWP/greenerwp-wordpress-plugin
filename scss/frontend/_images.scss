@@ -1,37 +1,27 @@
-@mixin scanlines($color, $height: 1px, $opacity: 0.2) {
-  position: relative;
-  &:after {
-    background-image: repeating-linear-gradient( to bottom, transparent 0 ,transparent $height, $color $height, $color $height * 2 );
-    background-size: 100% $height * 2, cover;
-    transform-origin: 50% 50%;
-    content: '';
-    opacity: $opacity;
-    position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-  }
-}
-
-.greenerwp-image-preview__link {
-	display: block;
-	cursor: zoom-in;
-	@include scanlines( #000, 2px, 0.2 );
-	img {
+.greenerwp-image-preview-wrap:not(.greenerwp-image-preview-wrap--loaded) {
+	.greenerwp-image-preview {
+		cursor: zoom-in;
+	}
+	.greenerwp-image-preview__controls {
 		display: block;
 	}
 }
 
+.greenerwp-image-preview-wrap {
+	position: relative;
+	display: inline-block;
+}
+
 .greenerwp-image-preview__controls {
+	display: none;
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	left: 0;
 	z-index: 1;
 	color: black;
 	font-size: 0.5em;
 	padding: 0.2em 0.4em;
-	display: block;
-	position: absolute;
-	bottom: 0;
-	right: 0;
 	background: rgba( white, 0.5 );
 	border-top-left-radius: 2px;
 }

@@ -30,5 +30,7 @@
 		"parcel": "^1.12.4",
 		"sass": "^1.22.12"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"lazysizes": "^5.2.0-beta1"
+	}
 }

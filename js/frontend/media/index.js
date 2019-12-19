@@ -1,4 +1,8 @@
-import ImagePreviewLink from "./image-preview-link.js";
+import ImagePreview from "./image-preview.js";
 
-document.querySelectorAll( '.greenerwp-image-preview__link' ).forEach(
-	link => new ImagePreviewLink( link ) );
+if ( document.querySelector( 'img.lazyload' ) ) {
+	import( 'lazysizes' ).then();
+}
+
+document.querySelectorAll( 'img.greenerwp-image-preview' ).forEach(
+	(image) => new ImagePreview( image ) );
