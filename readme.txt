@@ -1,8 +1,8 @@
 === Plugin Name ===
 Contributors: cneumann
 Requires at least: 5.2.3
-Tested up to: 5.3
-Stable tag: 0.0.5
+Tested up to: 5.3.2
+Stable tag: 0.0.6
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -11,13 +11,32 @@ Assists you in creating environmentally sustainable WordPress websites.
 
 == Description ==
 
-greenerWP helps building sustainable WordPress websites. It consists of "recipes" in the admin area that give suggestions on how to optimize your website, and various optimization settings.
+[greenerWP](https://greenerwp.net) is dedicated to help WordPress site owners making their sites and blogs more environmentally sustainable. The project consists of [free guides](https://greenerwp.net/guides) and open source tools to analyse and optimise your WordPress projects.
 
-The project and plugin is in an early stage and will change rapidly.
+The greenerWP WordPress plugin contains recipes that guide you in making your website more environmentally sustainable. It helps analysing and fixing problems with your site.
 
-=== Plugin Optimizations ===
+New to greenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" guide.
 
-* [Contact Form 7](https://wordpress.org/support/plugin/contact-form-7/): Prevent insertion of scripts and styles on posts and pages without contact form.
+The project and plugin is in an early stage.
+
+=== Recipes ===
+
+* Site caching
+* Disable Emoji replacements
+* Disable web fonts
+* Use a green web host
+* Reduce JPEG quality
+* Optimise Contact Form 7
+
+=== Optimisations ===
+
+* Change default JPEG image quality
+* Try to disable web fonts
+* Image previews and lazy loading
+
+==== Plugin Optimisations ====
+
+* [Contact Form 7](https://wordpress.org/support/plugin/contact-form-7/): Prevent insertion of scripts and styles on posts and pages without contact form
 
 == Installation ==
 
@@ -26,6 +45,10 @@ The project and plugin is in an early stage and will change rapidly.
 1. Use the greenerWP screen to configure and use the plugin
 
 == Changelog ==
+
+= 0.0.6 =
+
+* Added experimental image previews and lazy loading.
 
 = 0.0.5 =
 
