@@ -36,7 +36,9 @@ class Indicator {
 	}
 
 	render() {
-		document.body.innerHTML += this.args.widgetHTML;
+		var wrap = document.createElement( 'div' );
+		wrap.innerHTML += this.args.widgetHTML;
+		document.body.appendChild( wrap );
 		this.updateTransferIndicator();
 	};
 };
