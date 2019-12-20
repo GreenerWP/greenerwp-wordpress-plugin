@@ -19,6 +19,12 @@ New to greenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" g
 
 The project and plugin is in an early stage.
 
+=== Features ===
+
+* Recipes that give step by step instructions.
+* Various optional optimisations
+* Integration with greenerWP's [website scanner](https://scan.greenerwp.net)
+
 === Recipes ===
 
 * Site caching
@@ -47,6 +53,8 @@ The project and plugin is in an early stage.
 == Changelog ==
 
 = 0.0.7 =
+
+* Added website scanner links to toolbar.
 
 = 0.0.6 =
 
