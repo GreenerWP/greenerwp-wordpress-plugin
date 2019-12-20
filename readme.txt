@@ -2,7 +2,7 @@
 Contributors: cneumann
 Requires at least: 5.2.3
 Tested up to: 5.3.2
-Stable tag: 0.0.6
+Stable tag: 0.0.7
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,8 @@ The project and plugin is in an early stage.
 1. Use the greenerWP screen to configure and use the plugin
 
 == Changelog ==
+
+= 0.0.7 =
 
 = 0.0.6 =
 
