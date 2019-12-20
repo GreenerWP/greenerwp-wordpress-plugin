@@ -6,6 +6,7 @@ import GreenHosting from './green-hosting.js';
 import ReduceJPEGQuality from './reduce-jpeg-quality.js';
 import PluginDisableEmojisRecipe from './plugin-disable-emojis.js';
 import { Store, withSelect, withDispatch, retrieveAnalysis, retrieveRecipeStates, saveRecipeStates } from '../store';
+import UseLazyLoading from './use-lazy-loading.js';
 import WPSuperCacheRecipe from './wp-super-cache.js';
 import WebP from './web-p';
 import WebPExpress from './web-p-express';
@@ -19,6 +20,7 @@ var recipes = {};
   new GreenHosting(),
   new PluginDisableEmojisRecipe(),
   new ReduceJPEGQuality(),
+  new UseLazyLoading(),
   new WPSuperCacheRecipe(),
   new WebP(),
   new WebPExpress(),

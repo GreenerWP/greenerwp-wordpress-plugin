@@ -18,6 +18,10 @@ $plugin['analysis_images'] = function ( $plugin ) {
   return new Images();
 };
 
+$plugin['analysis_lazy_loading'] = function ( $plugin ) {
+  return new LazyLoading();
+};
+
 $plugin['analysis_plugins_wpcf7'] = function ( $plugin ) {
   return new Plugins\WPCF7();
 };
@@ -32,6 +36,7 @@ $plugin['analysis_checks'] = function ( $plugin ) {
 		$plugin['analysis_emojis'],
 		$plugin['analysis_hosting'],
 		$plugin['analysis_images'],
+		$plugin['analysis_lazy_loading'],
 		$plugin['analysis_plugins_wpcf7'],
 		$plugin['analysis_web_fonts'],
 	];

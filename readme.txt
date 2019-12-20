@@ -54,7 +54,8 @@ The project and plugin is in an early stage.
 
 = 0.0.7 =
 
-* Added website scanner links to toolbar.
+* Feature: Added website scanner links to toolbar.
+* New Recipe: Lazy loading
 
 = 0.0.6 =
 
