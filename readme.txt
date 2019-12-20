@@ -27,12 +27,13 @@ The project and plugin is in an early stage.
 
 === Recipes ===
 
-* Site caching
-* Disable Emoji replacements
-* Disable web fonts
 * Use a green web host
+* Site caching
+* Use lazy image loading
+* Disable web fonts
 * Reduce JPEG quality
 * Optimise Contact Form 7
+* Disable Emoji replacements
 
 === Optimisations ===
 
