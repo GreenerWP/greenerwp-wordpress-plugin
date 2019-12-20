@@ -6,6 +6,8 @@ const RecipeList = ( props ) => (
   <div>
     <p>
       {__( 'Optimise your site by following these step by step instructions. Click the checkboxes to mark items as done. Some items will be checked for automatically.', 'greenerwp' )}
+			<br/>
+      {__( 'The recipes are ordered by their average impact. You might want to optimise your site from top to bottom.', 'greenerwp' )}
     </p>
     { props.isLoading && (
     <p>

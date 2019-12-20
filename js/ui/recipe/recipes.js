@@ -14,17 +14,19 @@ import WPCF7 from './plugins/wpcf7.js';
 
 var recipes = {};
 [
-  new CacheRecipe(),
-  new DisableEmojisRecipe(),
-  new DisableWebFonts(),
   new GreenHosting(),
-  new PluginDisableEmojisRecipe(),
-  new ReduceJPEGQuality(),
+  new CacheRecipe(),
   new UseLazyLoading(),
-  new WPSuperCacheRecipe(),
   new WebP(),
-  new WebPExpress(),
+  new ReduceJPEGQuality(),
+  new DisableWebFonts(),
   new WPCF7(),
+  new DisableEmojisRecipe(),
+
+	// Hidden recipes
+  new WPSuperCacheRecipe(),
+  new PluginDisableEmojisRecipe(),
+  new WebPExpress(),
 ].forEach( instance => recipes[instance.id] = instance );
 
 var Recipes = withSelect( ( select, ownProps ) => {
