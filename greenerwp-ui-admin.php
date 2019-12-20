@@ -31,6 +31,10 @@ $plugin['ui_admin_recipes_controller'] = function ( $plugin ) {
   );
 };
 
+$plugin['ui_admin_scanner_links'] = function ( $plugin ) {
+  return new GreenerWP\UI\Admin\ScannerLinks();
+};
+
 $plugin['ui_admin_settings'] = function ( $plugin ) {
   return new GreenerWP\UI\Admin\Settings(
     $plugin[ 'frontend' ],
