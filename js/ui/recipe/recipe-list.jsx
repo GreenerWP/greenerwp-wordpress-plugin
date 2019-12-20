@@ -5,7 +5,7 @@ const { __, _x, _n, _nx } = wp.i18n;
 const RecipeList = ( props ) => (
   <div>
     <p>
-      {__( 'Optimize your site by following these step by step instructions. Click the checkboxes to mark items as done. Some items will be checked for automatically.', 'greenerwp' )}
+      {__( 'Optimise your site by following these step by step instructions. Click the checkboxes to mark items as done. Some items will be checked for automatically.', 'greenerwp' )}
     </p>
     { props.isLoading && (
     <p>

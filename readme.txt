@@ -65,7 +65,7 @@ The project and plugin is in an early stage.
 
 * Added automatic recipe checking.
 * Added green hosting recipe.
-* Added option to optimize Contact Form 7's use of styles and scripts.
+* Added option to optimise Contact Form 7's use of styles and scripts.
 
 = 0.0.4 =
 

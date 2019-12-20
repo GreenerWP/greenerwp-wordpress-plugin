@@ -7,8 +7,8 @@ class WPCF7 {
   constructor() {
     this.visible = (analysis) => { return analysis.plugin_wpcf7_active; },
     this.id = 'plugin_wpcf7';
-    this.name = __( 'Optimize Contact Form 7', 'greenerwp' );
-    // this.description = __( 'Optimize Contact Form 7', 'greenerwp' );
+    this.name = __( 'Optimise Contact Form 7', 'greenerwp' );
+    // this.description = __( 'Optimise Contact Form 7', 'greenerwp' );
     this.steps = [
       {
         type: 'link',
