@@ -2,7 +2,7 @@
 namespace GreenerWP\UI\Frontend;
 
 /**
- * REST controller for providing webside status.
+ * REST controller for providing website status.
  */
 class StatusController {
 	private $impact_calculator = null;
