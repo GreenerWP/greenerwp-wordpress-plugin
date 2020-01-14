@@ -128,7 +128,7 @@ function stepToggled( state = {}, action ) {
 };
 
 // Reducer for setting update.
-function settings( state = { weather_location: 'foo' }, action ) {
+function settings( state = { }, action ) {
 	switch ( action.type ) {
 	case 'UPDATE_SETTING':
 		return {

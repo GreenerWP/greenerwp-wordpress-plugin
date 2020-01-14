@@ -34,7 +34,3 @@ $plugin['preview_filter'] = function ( $plugin ) {
 		$plugin['template_renderer']
 	);
 };
-
-$plugin['weather'] = function ( $plugin ) {
-  return new GreenerWP\Weather();
-};
