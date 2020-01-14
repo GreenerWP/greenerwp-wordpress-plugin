@@ -55,6 +55,9 @@ The project and plugin is in an early stage.
 
 = 0.0.8 =
 
+* Feature: Page statistics
+* Enhancement: Reordered recipes by importance
+
 = 0.0.7 =
 
 * Feature: Added website scanner links to toolbar.
