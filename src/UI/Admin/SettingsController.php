@@ -43,6 +43,7 @@ class SettingsController {
 	 */
 	public function handle_settings( $request ) {
 		$known_settings = [
+			'statistics_enabled' => false,
 			'image_previews_enabled' => false,
 			'image_previews_lazy_loading' => false,
 			'jpeg_quality' => '',

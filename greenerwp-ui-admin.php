@@ -46,3 +46,15 @@ $plugin['ui_admin_settings_controller'] = function ( $plugin ) {
   return new GreenerWP\UI\Admin\SettingsController(
   );
 };
+
+$plugin['ui_admin_statistics'] = function ( $plugin ) {
+  return new GreenerWP\UI\Admin\Statistics(
+    $plugin[ 'frontend' ],
+    $plugin[ 'template_renderer' ]
+  );
+};
+
+$plugin['ui_admin_statistics_controller'] = function ( $plugin ) {
+  return new GreenerWP\UI\Admin\StatisticsController(
+  );
+};

@@ -22,6 +22,10 @@ class Frontend {
     ];
   }
 
+  public function localize_script( $handle, $var, $args ) {
+    $this->localizations[$handle][$var] = $args;
+  }
+
   public function enqueue_admin_script( $handle, $path, $deps ) {
     $this->admin_scripts[$handle] = [
       'path' => $path,
@@ -45,14 +49,25 @@ class Frontend {
   public function run() {
 		add_action( 'wp_enqueue_scripts', [ $this, 'on_enqueue_scripts' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'on_enqueue_admin_scripts' ] );
+		add_action( 'wp', [ $this, 'enqueue_core' ] );
+	}
 
+	public function enqueue_core() {
 		$this->enqueue_style( 'greenerwp-frontend', 'frontend.css' );
     $this->enqueue_script(
       'greenerwp-frontend', 'frontend.js',
       [ ] );
+
+		global $wp_query;
+		$this->localize_script( 'greenerwp-frontend', 'greenerwpVars', [
+			'root'  => esc_url_raw( rest_url() ),
+			'nonce' => wp_create_nonce( 'wp_rest' ),
+			'postID' => get_queried_object_id(),
+			'statisticsEnabled' => get_option( 'statistics_enabled', false ),
+		] );
 	}
 
-  public function on_enqueue_scripts() {
+	public function on_enqueue_scripts() {
     $this->enqueue_scripts();
   }
 
@@ -69,6 +84,13 @@ class Frontend {
         $handle, $script_url,
         $args['deps'], filemtime( $script_path ), true );
     }
+
+    $localizations = $this->localizations ?? [];
+    foreach ( $localizations as $handle => $vars ) {
+			foreach ( $vars as $var => $args ) {
+				wp_localize_script( $handle, $var, $args );
+			}
+		}
 
     $styles = $admin_scripts ? $this->admin_styles : $this->styles;
     foreach ( $styles as $handle => $args ) {

@@ -76,6 +76,24 @@ const actions = {
 			status: 'error',
 		};
 	},
+	requestStatistics() {
+		return {
+			type: 'FETCH_STATISTICS',
+		};
+	},
+	receiveStatistics( state ) {
+		return {
+			type: 'FETCH_STATISTICS',
+			status: 'success',
+			response: state,
+		};
+	},
+	receiveStatisticsError( state ) {
+		return {
+			type: 'FETCH_STATISTICS',
+			status: 'error',
+		};
+	},
 };
 
 // Reducer for analysis.
@@ -118,6 +136,18 @@ function settings( state = { weather_location: 'foo' }, action ) {
 			[action.key]: action.value,
 		};
 	case 'FETCH_SETTINGS':
+		switch ( action.status ) {
+		case 'success':
+			return action.response;
+		}
+	}
+	return state;
+};
+
+// Reducer for statistics.
+function statistics( state = [], action ) {
+	switch ( action.type ) {
+	case 'FETCH_STATISTICS':
 		switch ( action.status ) {
 		case 'success':
 			return action.response;
@@ -210,13 +240,41 @@ function fetchSettings( state = { isLoading: false }, action ) {
 	return state;
 };
 
+// Reducer for statistics fetching.
+function fetchStatistics( state = { isLoading: false }, action ) {
+	switch ( action.type ) {
+	case 'FETCH_STATISTICS':
+		switch ( action.status ) {
+		case undefined:
+			return {
+				...state,
+				isLoading: true,
+			};
+		case 'success':
+			return {
+				...state,
+				isLoading: false,
+			};
+		case 'error':
+			return {
+				...state,
+				error: true,
+				isLoading: false,
+			};
+		}
+	}
+	return state;
+};
+
 const Store = registerStore( 'greenerwp', {
 	reducer: combineReducers( {
 		fetchAnalysis,
 		fetchRecipeStates,
+		fetchStatistics,
 		analysis,
 		stepToggled,
 		settings,
+		statistics,
 		fetchSettings,
 	} ),
 	actions,
@@ -231,6 +289,9 @@ const Store = registerStore( 'greenerwp', {
 		getSettings( state ) {
 			return state.settings;
 		},
+		getStatistics( state ) {
+			return state.statistics;
+		},
 		getStepToggled( state ) {
 			return state.stepToggled || {};
 		},
@@ -240,12 +301,14 @@ const Store = registerStore( 'greenerwp', {
 		isLoading( state ) {
 			return state.fetchRecipeStates && state.fetchRecipeStates.isLoading
 				|| state.fetchAnalysis && state.fetchAnalysis.isLoading
-				|| state.fetchSettings && state.fetchSettings.isLoading;
+				|| state.fetchSettings && state.fetchSettings.isLoading
+				|| state.fetchStatistics && state.fetchStatistics.isLoading;
 		},
 		hasError( state ) {
 			return state.fetchRecipeStates && state.fetchRecipeStates.error
 				|| state.fetchAnalysis && state.fetchAnalysis.error
-				|| state.fetchSettings && state.fetchSettings.error;
+				|| state.fetchSettings && state.fetchSettings.error
+				|| state.fetchStatistics && state.fetchStatistics.error;
 		},
 	},
 } );
@@ -259,7 +322,7 @@ async function retrieveAnalysis() {
 	};
 	var response = await fetch( wpApiSettings.root + 'greenerwp/v1/analysis', opts );
 	var json = await response.json();
-	if ( json ) {
+	if ( response.ok && json ) {
 		Store.dispatch( actions.receiveAnalysis( json ) );
 	} else {
 		Store.dispatch( actions.receiveAnalysisError() );
@@ -275,7 +338,7 @@ async function retrieveRecipeStates() {
 	};
 	var response = await fetch( wpApiSettings.root + 'greenerwp/v1/recipes', opts );
 	var json = await response.json();
-	if ( json ) {
+	if ( response.ok && json ) {
 		Store.dispatch( actions.receiveRecipeStates( json ) );
 	} else {
 		Store.dispatch( actions.receiveRecipeStatesError() );
@@ -302,10 +365,26 @@ async function retrieveSettings() {
 	};
 	var response = await fetch( wpApiSettings.root + 'greenerwp/v1/settings', opts );
 	var json = await response.json();
-	if ( json ) {
+	if ( response.ok && json ) {
 		Store.dispatch( actions.receiveSettings( json ) );
 	} else {
 		Store.dispatch( actions.receiveSettingsError() );
+	}
+}
+
+async function retrieveStatistics() {
+	Store.dispatch( actions.requestStatistics() );
+	const opts = {
+		headers: {
+			'X-WP-Nonce': wpApiSettings.nonce,
+		},
+	};
+	var response = await fetch( wpApiSettings.root + 'greenerwp/v1/statistics', opts );
+	var json = await response.json();
+	if ( response.ok && json ) {
+		Store.dispatch( actions.receiveStatistics( json ) );
+	} else {
+		Store.dispatch( actions.receiveStatisticsError() );
 	}
 }
 
@@ -327,6 +406,7 @@ export {
 	saveRecipeStates,
 	retrieveAnalysis,
 	retrieveRecipeStates,
+	retrieveStatistics,
 	saveSettings,
 	retrieveSettings,
 };

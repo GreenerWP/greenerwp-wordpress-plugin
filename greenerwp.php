@@ -70,4 +70,9 @@ add_action( 'plugins_loaded', 'greenerwp_init' );
 
 /* register_activation_hook( __FILE__, 'greenerwp_activate' ); */
 /* register_deactivation_hook( __FILE__, 'greenerwp_deactivate' ); */
-/* register_uninstall_hook( __FILE__, 'greenerwp_uninstall' ); */
+
+function greenerwp_uninstall() {
+	delete_option( 'greenerwp_profile' );
+}
+
+register_uninstall_hook( __FILE__, 'greenerwp_uninstall' );

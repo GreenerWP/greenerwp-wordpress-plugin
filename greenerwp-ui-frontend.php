@@ -2,6 +2,10 @@
 
 namespace GreenerWP\UI\Frontend;
 
+$plugin['ui_frontend_profiler_controller'] = function ( $plugin ) {
+  return new ProfilerController();
+};
+
 $plugin['ui_frontend_status_controller'] = function ( $plugin ) {
   return new StatusController(
 		$plugin['weather'],

@@ -1,5 +1,11 @@
 "use strict";
 
+import Profiler from "./stats/profiler.js";
+
+if ( greenerwpVars.statisticsEnabled ) {
+	var profiler = new Profiler();
+}
+
 import ProfileIndicator from "./profile/indicator.js";
 
 var init = function( status ) {
