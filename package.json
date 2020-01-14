@@ -31,6 +31,13 @@
 		"sass": "^1.22.12"
 	},
 	"dependencies": {
-		"lazysizes": "^5.2.0-beta1"
+		"lazysizes": "^5.2.0-beta1",
+		"parcel-bundler": "^1.12.4",
+		"parcel-plugin-externals": "^0.3.0",
+		"react": "^16.12.0",
+		"react-table": "^7.0.0-rc.15"
+	},
+	"externals": {
+		"react": "React"
 	}
 }

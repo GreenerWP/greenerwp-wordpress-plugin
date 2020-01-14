@@ -10,7 +10,7 @@ class StatisticsController {
 	}
 
 	public function run() {
-		if ( ! get_option( 'statistics_enabled', false ) ) {
+		if ( ! get_option( 'greenerwp_statistics_enabled', false ) ) {
 			return;
 		}
 		add_action( 'rest_api_init', [ $this, 'register_routes' ] );

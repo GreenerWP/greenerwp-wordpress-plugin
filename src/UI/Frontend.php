@@ -63,7 +63,7 @@ class Frontend {
 			'root'  => esc_url_raw( rest_url() ),
 			'nonce' => wp_create_nonce( 'wp_rest' ),
 			'postID' => get_queried_object_id(),
-			'statisticsEnabled' => get_option( 'statistics_enabled', false ),
+			'statisticsEnabled' => get_option( 'greenerwp_statistics_enabled', false ),
 		] );
 	}
 

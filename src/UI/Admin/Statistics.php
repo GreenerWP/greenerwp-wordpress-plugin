@@ -14,7 +14,7 @@ class Statistics {
 	}
 
 	public function run() {
-		if ( ! get_option( 'statistics_enabled', false ) ) {
+		if ( ! get_option( 'greenerwp_statistics_enabled', false ) ) {
 			return;
 		}
 		add_action( 'admin_menu', [ $this, 'add_admin_menu' ] );
