@@ -57,6 +57,7 @@ The project and plugin is in an early stage.
 
 * Feature: Page statistics
 * Enhancement: Reordered recipes by importance
+* Removed feature: Status widget
 
 = 0.0.7 =
 

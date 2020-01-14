@@ -1,6 +1,5 @@
 import FrontendTweaksTab from './frontend-tweaks-tab.jsx';
 import PluginTweaksTab from './plugin-tweaks-tab.jsx';
-import ProfilesTab from './profiles-tab.jsx';
 import StatisticsTab from './statistics-tab.jsx';
 const { Button, TabPanel } = wp.components;
 
@@ -15,10 +14,6 @@ const SettingsTabs = ( props ) => {
 		"frontend-tweaks": {
 			tab: <FrontendTweaksTab {...props}/>,
 			label: __( 'Frontend tweaks', 'greenerwp' ),
-		},
-		"profiles": {
-			tab: <ProfilesTab {...props}/>,
-			label: __( 'Profiles', 'greenerwp' ),
 		},
 		"plugins": {
 			tab: <PluginTweaksTab {...props}/>,
