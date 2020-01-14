@@ -12,7 +12,6 @@ class Hosting {
 			$transient_key = 'greenerwp_is_green_host_response';
 			$result = get_transient( $transient_key );
 			if ( ! $result ) {
-				error_log( 'check' );
 				$url = 'http://api.thegreenwebfoundation.org/greencheck/' . $host;
 				$response = wp_remote_get( $url );
 				$body = wp_remote_retrieve_body( $response );
