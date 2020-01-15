@@ -47,9 +47,9 @@ class Profiler {
 		// https://developers.google.com/web/fundamentals/performance/navigation-and-resource-timing#listen_for_performance_entries_using_performanceobserver
 
 		var transferred = performance.getEntriesByType("navigation")[0].encodedBodySize;
-		console.log(transferred);
+		// console.log(transferred);
 		for ( var i=0; i < list.length; i++ ) {
-			console.log("== Resource[" + i + "] - " + list[i].name);
+			// console.log("== Resource[" + i + "] - " + list[i].name);
 			if ( "transferSize" in list[i] ) {
 				// console.log("... transferSize[" + i + "] = " + list[i].transferSize);
 				// transferred += list[i].transferSize;

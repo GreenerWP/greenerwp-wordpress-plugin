@@ -212,7 +212,6 @@ function fetchRecipeStates( state = { isLoading: false }, action ) {
 function fetchSettings( state = { isLoading: false }, action ) {
 	switch ( action.type ) {
 	case 'SAVING_SETTINGS':
-		console.log( 'saving?', action.saving );
 		return {
 			...state,
 			isSaving: action.saving,
