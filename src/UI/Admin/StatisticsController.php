@@ -5,7 +5,8 @@ namespace GreenerWP\UI\Admin;
  * REST controller for providing statistics.
  */
 class StatisticsController {
-	public function __construct() {
+	public function __construct( $page_views ) {
+		$this->page_views = $page_views;
 		$this->namespace = '/greenerwp/v1';
 	}
 
@@ -30,8 +31,8 @@ class StatisticsController {
 		register_rest_route(
 			$this->namespace, '/statistics', [
 				[
-					'methods'   => [ 'GET' ],
-					'callback'  => [ $this, 'retrieve_statistics' ],
+					'methods'   => [ 'GET', 'DELETE' ],
+					'callback'  => [ $this, 'statistics' ],
 					'permission_callback' => function ( $request ) {
 						return current_user_can( 'manage_options' );
 					},
@@ -44,19 +45,31 @@ class StatisticsController {
 	 *
 	 * @param WP_REST_Request $request Current request.
 	 */
-	public function retrieve_statistics( $request ) {
-		$profile = get_option( 'greenerwp_profile', [] );
+	public function statistics( $request ) {
+		if ( $request->get_method() === 'DELETE' ) {
+			$this->page_views->clear();
+			return;
+		}
+		$statistic = $this->page_views->get_statistic();
 		$scheme = is_ssl() ? 'https://' : 'http://';
 		$base_url = "{$scheme}{$_SERVER['HTTP_HOST']}";
 		$results = [];
-		foreach( $profile as $path => $entry ) {
-			$entry['url'] = "$base_url{$entry['path']}";
-			if ( $entry['postID'] ) {
-				$entry['permalink'] = get_permalink( $entry['postID'] );
-				$entry['title'] = get_the_title( $entry['postID'] );
+		foreach( $statistic as $entry ) {
+			$result = [
+				'views' => $entry['views'],
+				'path' => $entry['path'],
+			];
+			$result['url'] = "$base_url{$entry['path']}";
+			$post_id = url_to_postid( $result['url'] );
+			if ( $post_id ) {
+				$result['permalink'] = get_permalink( $post_id );
+				$result['title'] = get_the_title( $post_id );
 			}
-			$entry['totalTransferred'] = $entry['transferred'] * $entry['views'];
-			$results[] = $entry;
+			$result['avgTransferred'] = $entry['avg_transferred'];
+			$result['minTransferred'] = $entry['min_transferred'];
+			$result['maxTransferred'] = $entry['max_transferred'];
+			$result['totalTransferred'] = $entry['total_transferred'];
+			$results[] = $result;
 		}
 		return $results;
 	}

@@ -56,6 +56,7 @@ function greenerwp_init() {
 
   require __DIR__ . '/greenerwp-base.php';
   require __DIR__ . '/greenerwp-analysis.php';
+  require __DIR__ . '/greenerwp-profiling.php';
   require __DIR__ . '/greenerwp-tools.php';
   require __DIR__ . '/greenerwp-ui-admin.php';
   require __DIR__ . '/greenerwp-ui-frontend.php';
@@ -71,7 +72,19 @@ add_action( 'plugins_loaded', 'greenerwp_init' );
 /* register_deactivation_hook( __FILE__, 'greenerwp_deactivate' ); */
 
 function greenerwp_uninstall() {
-	delete_option( 'greenerwp_profile' );
+	global $wpdb;
+
+	// Delete all prefixed options
+	$keys = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'greenerwp_%'" );
+	foreach ( $keys as $key ) {
+		delete_option( $key );
+	}
+
+	// Drop all prefixed tables
+	$keys = $wpdb->get_results( "SHOW TABLES LIKE '{$wpdb->base_prefix}greenerwp_%'" );
+	foreach ( $keys as $key ) {
+		$wpdb->query( "DROP TABLE `{key}`" );
+	}
 }
 
 register_uninstall_hook( __FILE__, 'greenerwp_uninstall' );

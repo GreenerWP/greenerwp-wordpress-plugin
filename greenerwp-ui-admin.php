@@ -56,5 +56,6 @@ $plugin['ui_admin_statistics'] = function ( $plugin ) {
 
 $plugin['ui_admin_statistics_controller'] = function ( $plugin ) {
   return new GreenerWP\UI\Admin\StatisticsController(
-  );
+		$plugin['profiling_page_views']
+	);
 };

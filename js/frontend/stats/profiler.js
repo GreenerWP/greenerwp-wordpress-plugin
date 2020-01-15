@@ -17,7 +17,6 @@ class Profiler {
 		var profile = {
 			transferred: this.get(),
 			path: document.location.pathname,
-			postID: greenerwpVars.postID,
 		};
 
 		const opts = {

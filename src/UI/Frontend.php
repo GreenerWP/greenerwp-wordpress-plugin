@@ -62,7 +62,6 @@ class Frontend {
 		$this->localize_script( 'greenerwp-frontend', 'greenerwpVars', [
 			'root'  => esc_url_raw( rest_url() ),
 			'nonce' => wp_create_nonce( 'wp_rest' ),
-			'postID' => get_queried_object_id(),
 			'statisticsEnabled' => get_option( 'greenerwp_statistics_enabled', false ),
 		] );
 	}

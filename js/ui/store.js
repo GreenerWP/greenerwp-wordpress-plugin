@@ -372,6 +372,18 @@ async function retrieveSettings() {
 	}
 }
 
+async function clearStatistics() {
+	Store.dispatch( actions.requestStatistics() );
+	const opts = {
+		headers: {
+			'X-WP-Nonce': wpApiSettings.nonce,
+		},
+		method: 'DELETE',
+	};
+	var response = await fetch( wpApiSettings.root + 'greenerwp/v1/statistics', opts );
+	retrieveStatistics();
+}
+
 async function retrieveStatistics() {
 	Store.dispatch( actions.requestStatistics() );
 	const opts = {
@@ -403,6 +415,7 @@ async function saveSettings() {
 
 export {
 	Store as default, withSelect, withDispatch,
+	clearStatistics,
 	saveRecipeStates,
 	retrieveAnalysis,
 	retrieveRecipeStates,

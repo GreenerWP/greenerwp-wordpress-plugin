@@ -3,6 +3,8 @@ import {
   useTable
 } from 'react-table'
 
+const { Button } = wp.components;
+
 import React from 'react';
 
 const { __, _x, _n, _nx } = wp.i18n;
@@ -38,23 +40,35 @@ const StatisticsTable = ( props ) => {
 		},
 		{
 			Header: __( 'Size', 'greenerwp' ),
-			Cell: ( { cell: {value} } ) => (
-				<>{String( Math.round( value / 1000 ) / 1000 )} MB</>
+			Cell: ( { cell: {value}, row: row } ) => (
+				<>
+					Ø {String( Math.round( value / 1000 ) / 1000 )} MB<br/>
+					<small>
+						({String( Math.round( row.original.minTransferred / 1000 ) / 1000 )} -
+						{String( Math.round( row.original.maxTransferred / 1000 ) / 1000 )} MB)
+					</small>
+				</>
 			),
-			accessor: 'transferred',
+			accessor: 'avgTransferred',
+			sortType: 'basic',
 			sortDescFirst: true,
 		},
 		{
 			Header: __( 'Views', 'greenerwp' ),
+			Cell: ( { cell: {value} } ) => (
+				<>{String( Math.round( value * 100 ) )}%</>
+			),
 			accessor: 'views',
+			sortType: 'basic',
 			sortDescFirst: true,
 		},
 		{
 			Header: __( 'Total', 'greenerwp' ),
 			Cell: ( { cell: {value} } ) => (
-				<>{String( Math.round( value / 1000 ) / 1000 )} MB</>
+				<>Ø {String( Math.round( value * 100 ) )}%</>
 			),
 			accessor: 'totalTransferred',
+			sortType: 'basic',
 			sortDescFirst: true,
 		},
 	], [] );
@@ -119,6 +133,11 @@ const StatisticsTable = ( props ) => {
 
 	return (
 		<div>
+			<p className="alignright">
+				<Button isPrimary disabled={props.isLoading} isBusy={props.isLoading} onClick={props.clearStatistics}>
+					{ __( 'Clear statistics', 'greenerwp' ) }
+				</Button>
+			</p>
 			{ props.isLoading && (
 					<p>
 						{__( 'Loading statistics...', 'greenerwp' )}

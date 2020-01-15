@@ -5,7 +5,8 @@ namespace GreenerWP\UI\Frontend;
  * REST controller for collecting website profiles.
  */
 class ProfilerController {
-	public function __construct() {
+	public function __construct( $page_views ) {
+		$this->page_views = $page_views;
 		$this->namespace = '/greenerwp/v1';
 	}
 
@@ -43,12 +44,7 @@ class ProfilerController {
 	 */
 	public function receive_profile( $request ) {
     $profile = (array) json_decode( $request->get_body() );
-		$saved_profile = get_option( 'greenerwp_profile', [] );
-		$profile['views'] = 1;
-		if ( array_key_exists( $profile['path'], $saved_profile ) ) {
-			$profile['views'] = $saved_profile[$profile['path']]['views'] + 1;
-		}
-		$saved_profile[$profile['path']] = $profile;
-		update_option( 'greenerwp_profile', $saved_profile );
+		$this->page_views->save( $profile );
+		$this->page_views->prune();
 	}
 }

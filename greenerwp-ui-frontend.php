@@ -3,7 +3,7 @@
 namespace GreenerWP\UI\Frontend;
 
 $plugin['ui_frontend_profiler_controller'] = function ( $plugin ) {
-  return new ProfilerController();
+  return new ProfilerController( $plugin['profiling_page_views'] );
 };
 
 $plugin['ui_frontend_tweaks_disable_web_fonts'] = function ( $plugin ) {
