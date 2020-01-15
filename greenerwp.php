@@ -75,15 +75,15 @@ function greenerwp_uninstall() {
 	global $wpdb;
 
 	// Delete all prefixed options
-	$keys = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'greenerwp_%'" );
+	$keys = $wpdb->get_col( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'greenerwp_%'" );
 	foreach ( $keys as $key ) {
 		delete_option( $key );
 	}
 
 	// Drop all prefixed tables
-	$keys = $wpdb->get_results( "SHOW TABLES LIKE '{$wpdb->base_prefix}greenerwp_%'" );
+	$keys = $wpdb->get_col( "SHOW TABLES LIKE '{$wpdb->base_prefix}greenerwp_%'" );
 	foreach ( $keys as $key ) {
-		$wpdb->query( "DROP TABLE `{key}`" );
+		$wpdb->query( "DROP TABLE `{$key}`" );
 	}
 }
 
