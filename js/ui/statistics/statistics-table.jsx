@@ -1,4 +1,5 @@
 import {
+	usePagination,
 	useSortBy,
   useTable
 } from 'react-table'
@@ -78,12 +79,24 @@ const StatisticsTable = ( props ) => {
 		getTableBodyProps,
 		headerGroups,
 		rows,
+		page,
 		prepareRow,
+    canPreviousPage,
+    canNextPage,
+    pageOptions,
+    pageCount,
+    gotoPage,
+    nextPage,
+    previousPage,
+    setPageSize,
+    state: { pageIndex, pageSize },
   } = useTable({
     columns,
     data: props.statistics,
 		disableSortRemove: true,
 		initialState: {
+			pageIndex: 0,
+			pageSize: 10,
 			sortBy: [
 				{
 					id: 'totalTransferred',
@@ -92,7 +105,8 @@ const StatisticsTable = ( props ) => {
 			],
 		},
   },
-							 useSortBy
+							 useSortBy,
+							 usePagination
 	);
 
 	var table = (
@@ -116,7 +130,7 @@ const StatisticsTable = ( props ) => {
         ))}
       </thead>
 			<tbody {...getTableBodyProps()}>
-				{rows.map(
+				{page.map(
 					(row, i) => {
 						prepareRow(row);
 						return (
@@ -130,14 +144,32 @@ const StatisticsTable = ( props ) => {
 			</tbody>
 		</table>
 	);
-
-	return (
-		<div>
-			<p className="alignright">
+	var pagination = (
+		<div class="tablenav">
+			<div className="actions alignleft">
 				<Button isPrimary disabled={props.isLoading} isBusy={props.isLoading} onClick={props.clearStatistics}>
 					{ __( 'Clear statistics', 'greenerwp' ) }
 				</Button>
-			</p>
+			</div>
+			<div class="tablenav-pages">
+				<span class="displaying-num">{String(_n( '{0} Entry', '{0} Entries', rows.length, 'greenerwp' )).replace( '{0}', rows.length )}</span>
+				<span class="pagination-links">
+					<a class="first-page button" onClick={() => gotoPage(0)} disabled={!canPreviousPage}><span class="screen-reader-text">Letzte Seite</span><span aria-hidden="true">«</span></a>
+					<a class="previous-page button" onClick={() => previousPage()} disabled={!canPreviousPage}><span class="screen-reader-text">{ __( 'Previous Page', 'greenerwp' ) }</span><span aria-hidden="true">‹</span></a>
+
+					<span class="screen-reader-text">Aktuelle Seite</span>
+					<span id="table-paging" class="paging-input">
+						<span class="tablenav-paging-text">{pageIndex + 1} {__( 'of', 'greenerwp' )} <span class="total-pages">{pageOptions.length}</span></span>
+					</span>
+					<a class="next-page button" onClick={() => nextPage()} disabled={!canNextPage}><span class="screen-reader-text">Nächste Seite</span><span aria-hidden="true">›</span></a>
+					<a class="last-page button" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}><span class="screen-reader-text">Letzte Seite</span><span aria-hidden="true">»</span></a>
+				</span>
+			</div>
+		</div>
+	);
+
+	return (
+		<div>
 			{ props.isLoading && (
 					<p>
 						{__( 'Loading statistics...', 'greenerwp' )}
@@ -149,6 +181,7 @@ const StatisticsTable = ( props ) => {
 					</p>
 			) }
 			{ ! props.isLoading && ! props.hasError && table }
+			{ ! props.isLoading && ! props.hasError && pagination }
 		</div>
 	);
 };
