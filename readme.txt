@@ -53,10 +53,11 @@ The project and plugin is in an early stage.
 
 == Changelog ==
 
-= 0.0.8 =
+= 0.0.8 (2020-01-xx) =
 
 * Feature: Page statistics
 * Enhancement: Reordered recipes by importance
+* Fix: Cleanup options on uninstall
 * Removed feature: Status widget
 
 = 0.0.7 =
