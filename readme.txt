@@ -1,34 +1,34 @@
 === Plugin Name ===
 Contributors: cneumann
+Tags: climate, analysis, performance, sustainability, seo
 Requires at least: 5.2.3
 Tested up to: 5.3.2
-Stable tag: 0.0.8
+Stable tag: 0.1.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Assists you in creating environmentally sustainable WordPress websites.
+Assists you in creating climate-friendly WordPress websites.
 
 == Description ==
 
 [greenerWP](https://greenerwp.net) is dedicated to help WordPress site owners making their sites and blogs more environmentally sustainable. The project consists of [free guides](https://greenerwp.net/guides) and open source tools to analyse and optimise your WordPress projects.
 
-The greenerWP WordPress plugin contains recipes that guide you in making your website more environmentally sustainable. It helps analysing and fixing problems with your site.
+Make your websites more climate-friendly and improve your SEO and user-friendliness ☺
 
 New to greenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" guide.
 
-The project and plugin is in an early stage.
-
 === Features ===
 
-* Recipes that give step by step instructions.
-* Various optional optimisations
-* Integration with greenerWP's [website scanner](https://scan.greenerwp.net)
+* **Page size analysier**: Find the pages in your website that contribute most to your site's overall network traffic
+* Use greenerWP's **[website scanner](https://scan.greenerwp.net)** to get details about one of your pages' climate-friendliness
+* **Recipes**: Follow step by step instructions to improve your site
+* Various optional **optimisations**
 
 === Recipes ===
 
 * Use a green web host
-* Site caching
+* Use site caching
 * Use lazy image loading
 * Disable web fonts
 * Reduce JPEG quality
@@ -49,11 +49,17 @@ The project and plugin is in an early stage.
 
 1. Upload the plugin files to the `/wp-content/plugins/greenerwp` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress
-1. Use the greenerWP screen to configure and use the plugin
+1. Visit the 'greenerWP' admin menu entry to access configuration and features
+
+== Screenshots ==
+
+1. Page size statistics help you find pages worth optimising
+2. Recipes are step by step instructions for improving your site
+3. Configure greenerWP to fit your needs
 
 == Changelog ==
 
-= 0.0.8 (2020-01-xx) =
+= 0.1.0 (2020-01-16) =
 
 * Feature: Page statistics
 * Enhancement: Reordered recipes by importance
