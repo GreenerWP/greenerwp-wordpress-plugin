@@ -7,3 +7,4 @@ var profiler = new Profiler( {
 } );
 
 require( "./media/index.js" );
+require( './widgets/index.js' );

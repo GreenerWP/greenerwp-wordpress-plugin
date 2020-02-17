@@ -17,3 +17,9 @@ $plugin['ui_frontend_tweaks_jpeg_quality'] = function ( $plugin ) {
 $plugin['ui_frontend_tweaks_plugins_wpcf7'] = function ( $plugin ) {
   return new Tweaks\Plugins\WPCF7();
 };
+
+$plugin['ui_frontend_widgets_awareness'] = function ( $plugin ) {
+  return new Widgets\Awareness(
+		$plugin['template_renderer']
+  );
+};
