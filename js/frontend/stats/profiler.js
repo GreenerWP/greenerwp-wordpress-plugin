@@ -11,15 +11,11 @@ class Profiler {
 			window.addEventListener( "unload", this.sendBeacon.bind( this ) );
 		}
 
-		this.refresh();
-	}
-
-	refresh() {
-		setTimeout( () => {
-			var event = new CustomEvent( 'greenerwp:profiler-update', { detail: { profiler: this } });
-			document.dispatchEvent( event );
-			this.refresh();
-		}, 500 );
+		this.initProfile();
+		var perfObserver = new PerformanceObserver( this.update.bind( this ) );
+		perfObserver.observe( {
+			entryTypes: [ "navigation", "resource" ],
+		} );
 	}
 
 	// Sends the profile data to greenerWP.
@@ -33,34 +29,32 @@ class Profiler {
 		navigator.sendBeacon( url, JSON.stringify( profile ) );
 	}
 
-	get() {
-		if ( performance === undefined ) {
+	initProfile() {
+		this.profile = {};
+		this.profile.transferredSize = performance.getEntriesByType( "navigation" )[0].transferSize;
+		this.profile.encodedBodySize = performance.getEntriesByType( "navigation" )[0].encodedBodySize;
+		this.update( performance, null );
+	}
+
+	// Updates the profile.
+	update( list, obj ) {
+		var entries = list.getEntriesByType( "resource" );
+		if ( entries === undefined ) {
 			return;
 		}
-		var list = performance.getEntriesByType( "resource" );
-		if ( list === undefined ) {
-			return;
-		}
-
-		// var pageNav = performance.getEntriesByType("navigation")[0];
-		// var headerSize = pageNav.transferSize - pageNav.encodedBodySize;
-
-
-		// Use observer?
-		// https://developers.google.com/web/fundamentals/performance/navigation-and-resource-timing#listen_for_performance_entries_using_performanceobserver
-
-		var transferredSize = performance.getEntriesByType("navigation")[0].transferSize;
-		var encodedBodySize = performance.getEntriesByType("navigation")[0].encodedBodySize;
-		for ( var i=0; i < list.length; i++ ) {
-			if ( "transferSize" in list[i] ) {
-				transferredSize += list[i].transferSize;
-				encodedBodySize += list[i].encodedBodySize;
+		for ( var i=0; i < entries.length; i++ ) {
+			if ( "transferSize" in entries[i] ) {
+				this.profile.transferredSize += entries[i].transferSize;
+				this.profile.encodedBodySize += entries[i].encodedBodySize;
 			}
 		}
-		return {
-			transferredSize: transferredSize,
-			encodedBodySize: encodedBodySize,
-		};
+		var event = new CustomEvent( 'greenerwp:profiler-update', { detail: { profiler: this } });
+		document.dispatchEvent( event );
+	};
+
+	// Returns the profile.
+	get() {
+		return this.profile;
 	};
 };
 
