@@ -2,32 +2,35 @@
  * Statistics for bytes transferred.
  */
 class Profiler {
-	constructor( args ) {
+	constructor( opts ) {
 		// Feature detection
-		if ( ! 'sendBeacon' in navigator
-				 || ! 'keepalive' in new Request('')
-			 ) {
+		if ( performance === undefined ) {
 			return;
 		}
-		// window.addEventListener( "unload", this.sendBeacon.bind( this ) );
-		setTimeout( this.sendBeacon.bind( this ), 500 );
+		if ( opts.sendProfile && 'sendBeacon' in navigator ) {
+			window.addEventListener( "unload", this.sendBeacon.bind( this ) );
+		}
+
+		this.refresh();
 	}
 
-	sendBeacon() {
-		var profile = {
-			transferred: this.get(),
-			path: document.location.pathname,
-		};
+	refresh() {
+		setTimeout( () => {
+			var event = new CustomEvent( 'greenerwp:profiler-update', { detail: { profiler: this } });
+			document.dispatchEvent( event );
+			this.refresh();
+		}, 500 );
+	}
 
-		const opts = {
-			// headers: {
-			// 	'X-WP-Nonce': wpApiSettings.nonce,
-			// },
-			method: 'POST',
-			keepalive: true,
-			body: JSON.stringify( profile ),
-		};
-		fetch( greenerwpVars.root + 'greenerwp/v1/profiler', opts );
+	// Sends the profile data to greenerWP.
+	sendBeacon() {
+		var profile = this.get();
+		if ( ! profile ) {
+			return;
+		}
+		var url = greenerwpVars.root + 'greenerwp/v1/profiler';
+		profile['path'] = document.location.pathname;
+		navigator.sendBeacon( url, JSON.stringify( profile ) );
 	}
 
 	get() {
@@ -46,19 +49,19 @@ class Profiler {
 		// Use observer?
 		// https://developers.google.com/web/fundamentals/performance/navigation-and-resource-timing#listen_for_performance_entries_using_performanceobserver
 
-		var transferred = performance.getEntriesByType("navigation")[0].encodedBodySize;
-		// console.log(transferred);
+		var transferredSize = performance.getEntriesByType("navigation")[0].transferSize;
+		var encodedBodySize = performance.getEntriesByType("navigation")[0].encodedBodySize;
 		for ( var i=0; i < list.length; i++ ) {
-			// console.log("== Resource[" + i + "] - " + list[i].name);
 			if ( "transferSize" in list[i] ) {
-				// console.log("... transferSize[" + i + "] = " + list[i].transferSize);
-				// transferred += list[i].transferSize;
-				transferred += list[i].encodedBodySize;
+				transferredSize += list[i].transferSize;
+				encodedBodySize += list[i].encodedBodySize;
 			}
 		}
-
-		return transferred;
-	}
+		return {
+			transferredSize: transferredSize,
+			encodedBodySize: encodedBodySize,
+		};
+	};
 };
 
 export default Profiler;

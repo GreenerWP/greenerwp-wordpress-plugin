@@ -44,7 +44,15 @@ class ProfilerController {
 	 */
 	public function receive_profile( $request ) {
     $profile = (array) json_decode( $request->get_body() );
-		$this->page_views->save( $profile );
+		if ( ! is_numeric( $profile['transferredSize'] ?? null )
+			|| ! is_numeric( $profile['encodedBodySize'] ?? null )
+			|| ! is_string( $profile['path'] ?? null ) ) {
+			return new \WP_Error( 'missing_arguments', 'Missing/wrong arguments' );
+		}
+		$this->page_views->save( [
+			'path' => $profile['path'],
+			'transferred' => $profile['transferredSize'],
+		] );
 		$this->page_views->prune();
 	}
 }

@@ -11,7 +11,7 @@
 	</p>
 
 	<p>
-		<?php esc_html_e( 'To lessen the burden on your server, only the last 1000 views are considered and only the top 50 entries will be shown.', 'greenerwp' ) ?>
+		🛈 <?php esc_html_e( 'To lessen the burden on your server, only the last 1000 views are considered (and kept in database) and only the top 50 entries will be shown.', 'greenerwp' ) ?>
 	</p>
 
 	<div id="greenerwp-statistics"></div>

@@ -40,7 +40,7 @@ const StatisticsTable = ( props ) => {
 			accessor: 'title',
 		},
 		{
-			Header: __( 'Size', 'greenerwp' ),
+			Header: __( 'Transferred per View', 'greenerwp' ),
 			Cell: ( { cell: {value}, row: row } ) => (
 				<>
 					Ø {String( Math.round( value / 1000 ) / 1000 )} MB<br/>
@@ -92,7 +92,7 @@ const StatisticsTable = ( props ) => {
     state: { pageIndex, pageSize },
   } = useTable({
     columns,
-    data: props.statistics,
+    data: props.statistics.pages,
 		disableSortRemove: true,
 		initialState: {
 			pageIndex: 0,
@@ -152,7 +152,10 @@ const StatisticsTable = ( props ) => {
 				</Button>
 			</div>
 			<div class="tablenav-pages">
-				<span class="displaying-num">{String(_n( '{0} Entry', '{0} Entries', rows.length, 'greenerwp' )).replace( '{0}', rows.length )}</span>
+				<span class="displaying-num">
+					{String(_n( '{0} entry in table', '{0} entries in table', rows.length, 'greenerwp' )).replace( '{0}', rows.length )}, {' '}
+					{String(_n( '{0} page view recorded', '{0} page views recorded', props.statistics.views, 'greenerwp' )).replace( '{0}', props.statistics.views )}
+				</span>
 				<span class="pagination-links">
 					<a class="first-page button" onClick={() => gotoPage(0)} disabled={!canPreviousPage}><span class="screen-reader-text">Letzte Seite</span><span aria-hidden="true">«</span></a>
 					<a class="previous-page button" onClick={() => previousPage()} disabled={!canPreviousPage}><span class="screen-reader-text">{ __( 'Previous Page', 'greenerwp' ) }</span><span aria-hidden="true">‹</span></a>
@@ -168,6 +171,13 @@ const StatisticsTable = ( props ) => {
 		</div>
 	);
 
+	var view = (
+		<>
+		{table}
+		{pagination}
+		</>
+	);
+
 	return (
 		<div>
 			{ props.isLoading && (
@@ -180,8 +190,7 @@ const StatisticsTable = ( props ) => {
 						{__( 'Could not load statistics.', 'greenerwp' )}
 					</p>
 			) }
-			{ ! props.isLoading && ! props.hasError && table }
-			{ ! props.isLoading && ! props.hasError && pagination }
+			{ ! props.isLoading && ! props.hasError && view }
 		</div>
 	);
 };

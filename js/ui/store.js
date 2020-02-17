@@ -145,7 +145,7 @@ function settings( state = { }, action ) {
 };
 
 // Reducer for statistics.
-function statistics( state = [], action ) {
+function statistics( state = { pages: [], views: 0 }, action ) {
 	switch ( action.type ) {
 	case 'FETCH_STATISTICS':
 		switch ( action.status ) {

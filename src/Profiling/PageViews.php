@@ -121,10 +121,16 @@ EOT;
 			$this->wpdb->prepare(
 				$sql, apply_filters( 'greenerwp_page_views_statistics_limit', 50 ) ),
 			ARRAY_A );
+		if ( ! $total['transferred'] || ! $total['views'] ) {
+			return [];
+		}
 		foreach ( $rows as &$row ) {
 			$row['total_transferred'] = ( $row['avg_total'] ) / $total['transferred'];
 			$row['views'] = $row['views'] / $total['views'];
 		}
-		return $rows;
+		return [
+			'pages' => $rows,
+			'views' => $total['views'],
+		];
 	}
 }

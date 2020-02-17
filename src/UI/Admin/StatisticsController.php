@@ -54,7 +54,7 @@ class StatisticsController {
 		$scheme = is_ssl() ? 'https://' : 'http://';
 		$base_url = "{$scheme}{$_SERVER['HTTP_HOST']}";
 		$results = [];
-		foreach( $statistic as $entry ) {
+		foreach( $statistic['pages'] as $entry ) {
 			$result = [
 				'views' => $entry['views'],
 				'path' => $entry['path'],
@@ -71,6 +71,9 @@ class StatisticsController {
 			$result['totalTransferred'] = $entry['total_transferred'];
 			$results[] = $result;
 		}
-		return $results;
+		return [
+			'pages' => $results,
+			'views' => $statistic['views'],
+		];
 	}
 }

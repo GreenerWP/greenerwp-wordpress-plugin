@@ -59,6 +59,10 @@ New to greenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" g
 
 == Changelog ==
 
+= 0.2.0 (unreleased) =
+
+* Enhancement: Show more details in statistics.
+
 = 0.1.0 (2020-01-16) =
 
 * Feature: Page statistics

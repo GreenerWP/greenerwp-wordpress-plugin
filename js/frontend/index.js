@@ -2,8 +2,8 @@
 
 import Profiler from "./stats/profiler.js";
 
-if ( greenerwpVars.statisticsEnabled ) {
-	var profiler = new Profiler();
-}
+var profiler = new Profiler( {
+	sendProfile: greenerwpVars.statisticsEnabled,
+} );
 
 require( "./media/index.js" );
