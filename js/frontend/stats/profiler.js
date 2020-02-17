@@ -6,7 +6,7 @@ class Profiler {
 		// Feature detection
 		if (
 			performance === undefined
-			|| ! 'PerformanceObserver' in window
+				|| ! ( 'PerformanceObserver' in window )
 		) {
 			return;
 		}
