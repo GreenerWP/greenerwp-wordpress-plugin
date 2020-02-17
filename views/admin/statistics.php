@@ -7,7 +7,7 @@
 	<h1 class="wp-heading-inline"><?php esc_html_e( 'Statistics', 'greenerwp' ) ?></h1>
 
 	<p>
-		<?php esc_html_e( 'For technical reasons, only visits from users with modern browsers are collected. In practice, this should not be a problem, as these statistic are only meant to help you identify big pages in your website.', 'greenerwp' ) ?>
+		<?php esc_html_e( 'For technical reasons, only visits from users with modern browsers are collected. Also, transfer sizes for embedded elements from other domains (e.g. images, scripts or videos) are normally not counted.', 'greenerwp' ) ?>
 	</p>
 
 	<p>

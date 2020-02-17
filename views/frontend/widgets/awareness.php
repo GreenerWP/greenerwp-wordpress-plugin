@@ -26,6 +26,6 @@
 		transferred* for your visit of this page.
 		<a href="https://greenerwp.net/guides/environmental-sustainability-internet/" target="_blank">Why this matters.</a>
 		<br>
-		<small>* As reported by your browser</small>
+		<small>* As reported by your browser excluding embedded elements from other websites.</small>
 	</div>
 </div>
