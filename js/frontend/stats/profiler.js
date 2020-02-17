@@ -4,7 +4,10 @@
 class Profiler {
 	constructor( opts ) {
 		// Feature detection
-		if ( performance === undefined ) {
+		if (
+			performance === undefined
+			|| ! 'PerformanceObserver' in window
+		) {
 			return;
 		}
 		if ( opts.sendProfile && 'sendBeacon' in navigator ) {
