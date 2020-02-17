@@ -27,6 +27,7 @@ class Awareness {
 		document.addEventListener(
 			'greenerwp:profiler-update',
 			( event ) => {
+				this.widget.style.display = 'block';
 				var profile = event.detail.profiler.get();
 
 				this.state = {
@@ -49,7 +50,7 @@ class Awareness {
 		Object.keys( this.state ).forEach( ( key ) => {
 			var elements = this.widget.querySelectorAll(
 				'.greenerwp-awareness-widget__' + key );
-			elements.forEach( ( element ) => {
+			[...elements].forEach( ( element ) => {
 				if ( element instanceof HTMLProgressElement ) {
 					element.value = this.state[key];
 				}
