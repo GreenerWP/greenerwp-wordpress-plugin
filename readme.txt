@@ -21,6 +21,7 @@ New to greenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" g
 === Features ===
 
 * **Page size analysier**: Find the pages in your website that contribute most to your site's overall network traffic
+* **Byte Transfer Graph**: Show your visitors how big your pages are compared to the average
 * Use greenerWP's **[website scanner](https://scan.greenerwp.net)** to get details about one of your pages' climate-friendliness
 * **Recipes**: Follow step by step instructions to improve your site
 * Various optional **optimisations**
@@ -59,10 +60,10 @@ New to greenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" g
 
 == Changelog ==
 
-= 0.2.0 (unreleased) =
+= 0.2.0 (2020-02-18) =
 
 * Enhancement: Show more details in statistics.
-* Feature: Added awareness widget.
+* Feature: Added Bytes Graph widget.
 
 = 0.1.0 (2020-01-16) =
 

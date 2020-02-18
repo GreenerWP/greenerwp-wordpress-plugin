@@ -1,15 +1,19 @@
 .greenerwp-awareness-widget {
 	display: none;
-	position: absolute;
-	top: 0;
-	left: 0;
+	position: relative;
 	width: 100%;
 	height: 1em;
-	z-index: 5000;
+	&--position-absolute {
+		position: absolute;
+		z-index: 5000;
+		top: 0;
+		left: 0;
+	}
 }
 
 .greenerwp-awareness-widget__description {
 	display: none;
+	position: absolute;
 	background: white;
 	margin-top: 1.5em;
 	padding: 0.5em;

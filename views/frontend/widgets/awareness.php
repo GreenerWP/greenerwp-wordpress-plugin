@@ -3,7 +3,20 @@
  * Template for the awareness widget.
  */
 ?>
-<div class="greenerwp-awareness-widget">
+<div class="greenerwp-awareness-widget <?php echo ( $position === 'absolute' ? 'greenerwp-awareness-widget--position-absolute' : '' ) ?>">
+	<div class="greenerwp-awareness-widget__description">
+		<a href="#" class="greenerwp-awareness-widget__description-close" title="Close">✖</a>
+		<?php if ( $description ): ?>
+			<?php echo $description ?>
+		<?php else: ?>
+			<strong>We care about the future and the climate.</strong> The graph shows the amount of bytes
+			transferred over the network for an average webpage visit in 2019 and the amount of bytes
+			transferred* for your visit of this page.
+			<a href="https://greenerwp.net/guides/environmental-sustainability-internet/" target="_blank">Why this matters.</a>
+			<br>
+			<small>* As reported by your browser excluding embedded elements from other websites.</small>
+		<?php endif ?>
+	</div>
 	<div class="greenerwp-awareness-widget__transfer-graph">
 		&nbsp;
 		<div class="greenerwp-awareness-widget__transfer-graph-average">
@@ -18,14 +31,5 @@
 	</a>
 	<div class="greenerwp-awareness-widget__transfer-graph-label greenerwp-awareness-widget__transfer-graph-label--average">
 		4 MB average
-	</div>
-	<div class="greenerwp-awareness-widget__description">
-		<a href="#" class="greenerwp-awareness-widget__description-close" title="Close">✖</a>
-		<strong>We care about the future and the climate.</strong> The graph shows the amount of bytes
-		transferred over the network for an average webpage visit in 2019 and the amount of bytes
-		transferred* for your visit of this page.
-		<a href="https://greenerwp.net/guides/environmental-sustainability-internet/" target="_blank">Why this matters.</a>
-		<br>
-		<small>* As reported by your browser excluding embedded elements from other websites.</small>
 	</div>
 </div>

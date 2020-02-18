@@ -9,9 +9,9 @@ class Awareness extends \WP_Widget {
 	function __construct( $template_renderer ) {
 		parent::__construct(
 			'greenerwp_awareness_widget',
-			__( 'greenerWP Awareness', 'greenerwp' ),
+			__( 'greenerWP Bytes Graph', 'greenerwp' ),
 			[
-				'description' => __( 'Talk about climate-friendlyness', 'greenerwp' ),
+				'description' => __( 'A graph which shows transferred bytes.', 'greenerwp' ),
 			] );
 		$this->template_renderer = $template_renderer;
 	}
@@ -28,7 +28,25 @@ class Awareness extends \WP_Widget {
 		echo $args['before_widget'];
 		$this->template_renderer->render(
 			'frontend/widgets/awareness', [
+				'description' => $instance['description'],
+				'position' => $instance['position'],
 			] );
 		echo $args['after_widget'];
+	}
+
+	public function form( $instance ) {
+		$this->template_renderer->render(
+			'frontend/widgets/awareness-form', [
+				'widget' => $this,
+				'description' => $instance['description'] ?? '',
+				'position' => $instance['position'] ?? '',
+			] );
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		return [
+			'description' => trim( $new_instance['description'] ?? '' ),
+			'position' => $new_instance['position'] === 'absolute' ? 'absolute' : '',
+		];
 	}
 }
