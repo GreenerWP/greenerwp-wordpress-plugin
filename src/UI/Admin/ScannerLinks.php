@@ -25,7 +25,10 @@ class ScannerLinks {
 
 		$wp_admin_bar->add_node( [
 			'id' => 'greenerwp',
-			'title' => __( 'GreenerWP', 'greenerwp' ),
+			'title' => '<span class="ab-icon" style="display:inline-block; width:0.7em; height:0.5em; top:0.4em; background: url(\'' . Page::MENU_ICON . '\') no-repeat !important"><span class="screen-reader-text">' . __( 'GreenerWP', 'greenerwp' ) . '</span></span>',
+			'meta' => [
+				'title' => __( 'GreenerWP Tools', 'greenerwp' ),
+			],
 		] );
 
 		$wp_admin_bar->add_node( [
