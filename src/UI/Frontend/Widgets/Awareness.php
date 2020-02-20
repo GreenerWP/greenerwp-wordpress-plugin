@@ -9,7 +9,7 @@ class Awareness extends \WP_Widget {
 	function __construct( $template_renderer ) {
 		parent::__construct(
 			'greenerwp_awareness_widget',
-			__( 'greenerWP Bytes Graph', 'greenerwp' ),
+			__( 'GreenerWP Bytes Graph', 'greenerwp' ),
 			[
 				'description' => __( 'A graph which shows transferred bytes.', 'greenerwp' ),
 			] );

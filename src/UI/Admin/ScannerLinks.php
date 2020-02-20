@@ -25,7 +25,7 @@ class ScannerLinks {
 
 		$wp_admin_bar->add_node( [
 			'id' => 'greenerwp',
-			'title' => __( 'greenerWP', 'greenerwp' ),
+			'title' => __( 'GreenerWP', 'greenerwp' ),
 		] );
 
 		$wp_admin_bar->add_node( [

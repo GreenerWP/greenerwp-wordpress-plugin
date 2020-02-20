@@ -4,10 +4,10 @@
  */
 ?>
 <div class="wrap">
-	<h1 class="wp-heading-inline"><?php esc_html_e( 'greenerWP', 'greenerwp' ) ?></h1>
+	<h1 class="wp-heading-inline"><?php esc_html_e( 'GreenerWP', 'greenerwp' ) ?></h1>
 
 	<p>
-		<?php esc_html_e( 'Welcome to greenerWP. This plugin helps you making your website more environmentally sustainable.', 'greenerwp' ) ?>
+		<?php esc_html_e( 'Welcome to GreenerWP. This plugin helps you making your website more environmentally sustainable.', 'greenerwp' ) ?>
 	</p>
 	<p>
 		🛈 <?php echo str_replace( '<a>', '<a href="'.admin_url( 'admin.php?page=greenerwp_recipes' ).'">',

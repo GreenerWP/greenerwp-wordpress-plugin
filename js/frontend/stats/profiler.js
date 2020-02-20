@@ -21,7 +21,7 @@ class Profiler {
 		} );
 	}
 
-	// Sends the profile data to greenerWP.
+	// Sends the profile data to GreenerWP.
 	sendBeacon() {
 		var profile = this.get();
 		if ( ! profile ) {

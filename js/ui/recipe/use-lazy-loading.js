@@ -18,7 +18,7 @@ class UseLazyLoading {
         id: 'image_lazy_loading_with_greenerwp',
 				check: (analysis) => { return analysis.greenerwp_image_lazy_loading; },
         args: {
-          text: __( 'Configure greenerWP to use lazy loading of images', 'greenerwp' ),
+          text: __( 'Configure GreenerWP to use lazy loading of images', 'greenerwp' ),
           href: 'admin.php?page=greenerwp_settings'
         },
       }

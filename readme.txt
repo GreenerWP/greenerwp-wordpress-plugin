@@ -12,17 +12,17 @@ Assists you in creating climate-friendly WordPress websites.
 
 == Description ==
 
-[greenerWP](https://greenerwp.net) is dedicated to help WordPress site owners making their sites and blogs more environmentally sustainable. The project consists of [free guides](https://greenerwp.net/guides) and open source tools to analyse and optimise your WordPress projects.
+[GreenerWP](https://greenerwp.net) is dedicated to help WordPress site owners making their sites and blogs more environmentally sustainable. The project consists of [free guides](https://greenerwp.net/guides) and open source tools to analyse and optimise your WordPress projects.
 
 Make your websites more climate-friendly and improve your SEO and user-friendliness ☺
 
-New to greenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" guide.
+New to GreenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" guide.
 
 === Features ===
 
 * **Page size analysier**: Find the pages in your website that contribute most to your site's overall network traffic
 * **Byte Transfer Graph**: Show your visitors how big your pages are compared to the average
-* Use greenerWP's **[website scanner](https://scan.greenerwp.net)** to get details about one of your pages' climate-friendliness
+* Use GreenerWP's **[website scanner](https://scan.greenerwp.net)** to get details about one of your pages' climate-friendliness
 * **Recipes**: Follow step by step instructions to improve your site
 * Various optional **optimisations**
 
@@ -50,13 +50,13 @@ New to greenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" g
 
 1. Upload the plugin files to the `/wp-content/plugins/greenerwp` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress
-1. Visit the 'greenerWP' admin menu entry to access configuration and features
+1. Visit the 'GreenerWP' admin menu entry to access configuration and features
 
 == Screenshots ==
 
 1. Page size statistics help you find pages worth optimising
 2. Recipes are step by step instructions for improving your site
-3. Configure greenerWP to fit your needs
+3. Configure GreenerWP to fit your needs
 
 == Changelog ==
 

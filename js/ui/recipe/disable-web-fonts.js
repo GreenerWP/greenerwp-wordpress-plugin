@@ -18,7 +18,7 @@ class DisableWebFonts {
         id: 'disable_web_fonts_with_greenerwp',
 				check: (analysis) => { return analysis.greenerwp_web_fonts_disable; },
         args: {
-          text: __( 'Configure greenerWP to disable web fonts', 'greenerwp' ),
+          text: __( 'Configure GreenerWP to disable web fonts', 'greenerwp' ),
 					description: __( 'This will not work for all themes.', 'greenerwp' ),
           href: 'admin.php?page=greenerwp_settings'
         },

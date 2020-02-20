@@ -15,7 +15,7 @@ class WPCF7 {
 				id: 'plugin_wpcf7_jquery_fix',
 				check: (analysis) => { return analysis.greenerwp_wpcf7_jquery_fix_enabled; },
         args: {
-          text: __( 'Configure greenerWP to remove jQuery from posts and pages without a contact form.', 'greenerwp' ),
+          text: __( 'Configure GreenerWP to remove jQuery from posts and pages without a contact form.', 'greenerwp' ),
           href: 'admin.php?page=greenerwp_settings'
         },
       },
