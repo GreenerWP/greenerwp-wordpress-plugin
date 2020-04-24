@@ -3,7 +3,7 @@
  * Plugin Name: GreenerWP
  * Plugin URI: https://greenerwp.net
  * Description: Assists you in creating environmentally sustainable WordPress websites.
- * Version: 0.2.1
+ * Version: 0.2.2
  * Requires at least: 5.2.3
  * Requires PHP: 7.0
  * Author: Christian Neumann

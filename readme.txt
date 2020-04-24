@@ -2,8 +2,8 @@
 Contributors: cneumann
 Tags: climate, analysis, performance, sustainability, seo
 Requires at least: 5.2.3
-Tested up to: 5.3.2
-Stable tag: 0.2.1
+Tested up to: 5.4
+Stable tag: 0.2.2
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -59,6 +59,12 @@ New to GreenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" g
 3. Configure GreenerWP to fit your needs
 
 == Changelog ==
+
+= 0.2.2 (2020-04-24 =
+
+* Enhancement: Add compatibility for WordPress 5.4
+* Cosmetic: Changed notation from greenerWP to GreenerWP.
+* Cosmetic: Added GreenerWP icon in admin bar and menu.
 
 = 0.2.1 (2020-02-18) =
 
