@@ -60,7 +60,7 @@ New to GreenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" g
 
 == Changelog ==
 
-= 0.2.2 (2020-04-24 =
+= 0.2.2 (2020-04-24) =
 
 * Enhancement: Add compatibility for WordPress 5.4
 * Cosmetic: Changed notation from greenerWP to GreenerWP.
