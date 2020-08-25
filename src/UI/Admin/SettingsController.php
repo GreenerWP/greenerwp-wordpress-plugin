@@ -45,7 +45,6 @@ class SettingsController {
 		$known_settings = [
 			'statistics_enabled' => false,
 			'image_previews_enabled' => false,
-			'image_previews_lazy_loading' => false,
 			'jpeg_quality' => '',
 			'web_fonts_disable' => false,
 			'wpcf7_jquery_fix_enabled' => false,

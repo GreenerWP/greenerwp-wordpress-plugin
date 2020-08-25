@@ -2,7 +2,7 @@
 namespace GreenerWP\Images;
 
 /**
- * Implement image previews and lazyloading.
+ * Implement image previews.
  */
 class PreviewFilter {
 	private $template_renderer = null;
@@ -96,13 +96,7 @@ class PreviewFilter {
 		if ( preg_match( '/width="\d+"/', $image ) ) {
 			$width = '';
 		}
-		$lazy_load = get_option( 'greenerwp_image_previews_lazy_loading', false );
-
-		if ( $lazy_load ) {
-			$image = preg_replace( '/class="([^"]+)"/', 'class="\1 lazyload"', $image );
-		} else {
-			$image = preg_replace( '/class="([^"]+)"/', 'class="\1 greenerwp-image-preview"', $image );
-		}
+		$image = preg_replace( '/class="([^"]+)"/', 'class="\1 greenerwp-image-preview"', $image );
 		$image = preg_replace( '/src="([^"]+)"/', $width . ' data-src="\1" src="' . $preview_src[0] . '"', $image );
 		preg_match( '/alt="([^"]+)"/', $image, $matches );
 		$alt = $matches[1];
@@ -111,10 +105,6 @@ class PreviewFilter {
 				'alt' => $alt,
 			] );
 		$ret = $image . $noscript_image . $controls;
-		if ( $lazy_load ) {
-			return $ret;
-		} else {
-			return '<div class="greenerwp-image-preview-wrap">' . $ret . '</div>';
-		}
+		return '<div class="greenerwp-image-preview-wrap">' . $ret . '</div>';
 	}
 }

@@ -3,7 +3,7 @@
  * Plugin Name: GreenerWP
  * Plugin URI: https://greenerwp.net
  * Description: Assists you in creating environmentally sustainable WordPress websites.
- * Version: 0.2.2
+ * Version: 0.2.3
  * Requires at least: 5.2.3
  * Requires PHP: 7.0
  * Author: Christian Neumann
@@ -29,6 +29,9 @@
  */
 
 /* require __DIR__ . '/vendor/autoload.php'; */
+
+
+define( 'GREENERWP_VERSION', '0.2.3' );
 
 spl_autoload_register( 'greenerwp_autoloader' );
 function greenerwp_autoloader( $class_name ) {
@@ -63,10 +66,22 @@ function greenerwp_init() {
 
   $plugin->run();
 
+	$upgrader = new GreenerWP\Upgrades\Upgrader();
+	$upgrader->upgrade_if_needed();
+
   global $greenerwp;
   $greenerwp = $plugin;
 }
 add_action( 'plugins_loaded', 'greenerwp_init' );
+
+function greenerwp_update_version() {
+	update_option( 'greenerwp_version', GREENERWP_VERSION );
+}
+
+function greenerwp_activate() {
+	greenerwp_update_version();
+}
+register_activation_hook( __FILE__, 'greenerwp_activate' );
 
 /* register_activation_hook( __FILE__, 'greenerwp_activate' ); */
 /* register_deactivation_hook( __FILE__, 'greenerwp_deactivate' ); */

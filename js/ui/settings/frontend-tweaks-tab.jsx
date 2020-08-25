@@ -34,7 +34,7 @@ const FrontendTweaksTab = ( props ) => {
 			onChange={ ( value ) => props.updateSetting( 'jpeg_quality', value ) }
 			help={ __( 'Overwrite WordPress\' default quality for JPEG images. Leave empty to use WordPress\' default, which is 82. Does not apply to already uploaded images. Use the "Regenerate Thumbnails" plugin to recreate thumbnails with the new quality.', 'greenerwp' ) }
 			value={props.settings[ 'jpeg_quality' ]}/>
-			<h4>{__( 'Image previews and lazy loading', 'greenerwp' )}</h4>
+			<h4>{__( 'Image previews', 'greenerwp' )}</h4>
 			<ToggleControl
 			label={__( 'Experimental: Enable image previews', 'greenerwp' )}
 			onChange={ ( ) => props.updateSetting( 'image_previews_enabled', ! props.settings[ 'image_previews_enabled' ] ) }
@@ -42,15 +42,6 @@ const FrontendTweaksTab = ( props ) => {
 			<p>
 				{
 					__( 'This option will replace images in posts and pages with low quality image previews.', 'greenerwp' )
-				}
-			</p>
-			<ToggleControl
-			label={__( 'Experimental: Enable lazy loading of original images', 'greenerwp' )}
-			onChange={ ( ) => props.updateSetting( 'image_previews_lazy_loading', ! props.settings[ 'image_previews_lazy_loading' ] ) }
-			checked={ props.settings[ 'image_previews_lazy_loading' ] }/>
-			<p>
-				{
-					__( 'If image previews are enabled, this option wil lazy load the original images: if an image is only visible after some scrolling, the original image will not load until then.', 'greenerwp' )
 				}
 			</p>
 		</>
