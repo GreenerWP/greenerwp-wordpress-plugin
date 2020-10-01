@@ -59,7 +59,7 @@ New to GreenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" g
 
 == Changelog ==
 
-= 0.2.3 (2020-08-25) =
+= 0.2.3 (2020-10-01) =
 
 * Enhancement: Add compatibility for WordPress 5.5
 * Removed feature: Lazy loading and recipe (built into WordPress 5.5)
