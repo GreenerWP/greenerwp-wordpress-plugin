@@ -59,6 +59,10 @@ New to GreenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" g
 
 == Changelog ==
 
+= 0.2.4 (???) =
+
+* Fix: Removed warnings because of wrong register_rest_route calls.
+
 = 0.2.3 (2020-10-01) =
 
 * Enhancement: Add compatibility for WordPress 5.5
