@@ -7,7 +7,7 @@ namespace GreenerWP\UI\Frontend;
 class ProfilerController {
 	public function __construct( $page_views ) {
 		$this->page_views = $page_views;
-		$this->namespace = '/greenerwp/v1';
+		$this->namespace = 'greenerwp/v1';
 	}
 
 	public function run() {

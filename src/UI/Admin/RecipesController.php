@@ -6,7 +6,7 @@ namespace GreenerWP\UI\Admin;
  */
 class RecipesController {
 	public function __construct() {
-		$this->namespace = '/greenerwp/v1';
+		$this->namespace = 'greenerwp/v1';
 	}
 
 	public function run() {

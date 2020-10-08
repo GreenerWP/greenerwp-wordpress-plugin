@@ -6,7 +6,7 @@ namespace GreenerWP\UI\Admin;
  */
 class AnalysisController {
 	public function __construct( $checks ) {
-		$this->namespace = '/greenerwp/v1';
+		$this->namespace = 'greenerwp/v1';
 		$this->checks = $checks;
 	}
 
