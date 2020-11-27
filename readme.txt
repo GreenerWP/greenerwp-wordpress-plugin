@@ -59,7 +59,7 @@ New to GreenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" g
 
 == Changelog ==
 
-= 0.2.4 (2020-11-27 =
+= 0.2.4 (2020-11-27) =
 
 * Fix: Removed warnings because of wrong register_rest_route calls.
 
