@@ -2,8 +2,8 @@
 Contributors: cneumann
 Tags: climate, analysis, performance, sustainability, seo
 Requires at least: 5.2.3
-Tested up to: 5.5
-Stable tag: 0.2.3
+Tested up to: 5.6
+Stable tag: 0.2.4
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -59,7 +59,7 @@ New to GreenerWP? Read our "[Get Started](https://greenerwp.net/get-started/)" g
 
 == Changelog ==
 
-= 0.2.4 (???) =
+= 0.2.4 (2020-11-27 =
 
 * Fix: Removed warnings because of wrong register_rest_route calls.
 
