@@ -2,7 +2,7 @@
 Contributors: cneumann
 Tags: climate, analysis, performance, sustainability, seo
 Requires at least: 5.2.3
-Tested up to: 5.6
+Tested up to: 5.9
 Stable tag: 0.2.4
 Requires PHP: 7.0
 License: GPLv2 or later
