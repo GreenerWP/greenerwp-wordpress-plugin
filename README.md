@@ -8,7 +8,6 @@ Assists you in creating climate-friendly WordPress websites.
 See readme.txt, https://greenerwp.net/ and
 https://wordpress.org/plugins/greenerwp/ for more information.
 
-# Contributors
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
