@@ -6,6 +6,15 @@
   "commit": false,
   "contributors": [
     {
+      "login": "HDValentin",
+      "name": "Valentin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1276955?v=4",
+      "profile": "https://chillr.de/",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
       "login": "chrneumann",
       "name": "Christian Neumann",
       "avatar_url": "https://avatars.githubusercontent.com/u/1172028?v=4",
