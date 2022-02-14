@@ -13,6 +13,16 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "chrneumann",
+      "name": "Christian Neumann",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1172028?v=4",
+      "profile": "https://utopicode.de/",
+      "contributions": [
+        "code",
+        "projectManagement"
+      ]
     }
   ],
   "contributorsPerLine": 7,

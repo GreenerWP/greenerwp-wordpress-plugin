@@ -19,7 +19,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://chillr.de/"><img src="https://avatars.githubusercontent.com/u/1276955?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Valentin</b></sub></a><br /><a href="#translation-HDValentin" title="Translation">🌍</a></td>
-  </tr>
+    <td align="center"><a href="https://utopicode.de/"><img src="https://avatars.githubusercontent.com/u/1172028?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Christian Neumann</b></sub></a><br /><a href="https://github.com/GreenerWP/greenerwp-wordpress-plugin/commits?author=chrneumann" title="Code">💻</a> <a href="#projectManagement-chrneumann" title="Project Management">📆</a></td> </tr>
 </table>
 
 <!-- markdownlint-restore -->
