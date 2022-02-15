@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: cneumann
-Tags: climate, analysis, performance, sustainability, seo
+Tags: climate, analysis, performance, sustainability, seo, co2, carbon, footprint, optimise, optimize, minimise, minimize
 Requires at least: 5.2.3
 Tested up to: 5.9
 Stable tag: 0.2.4
